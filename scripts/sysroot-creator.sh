@@ -141,7 +141,7 @@ SetEnvironmentVariables() {
 SanityCheck() {
   Banner "Sanity Checks"
 
-  BUILD_DIR="${SCRIPT_DIR}/build/${DIST}"
+  BUILD_DIR="${SCRIPT_DIR}/../build/${DIST}"
   mkdir -p ${BUILD_DIR}
   echo "Using build directory: ${BUILD_DIR}"
 
@@ -190,7 +190,7 @@ GeneratePackageListAmd64() {
   local package_list="${BUILD_DIR}/Packages.${DIST}_amd64.bz2"
   local tmp_package_list="${BUILD_DIR}/Packages.${DIST}_amd64"
   DownloadOrCopy "${PACKAGE_LIST_AMD64}" "${package_list}"
-  VerifyPackageListing "${PACKAGE_FILE_AMD64}" "${package_list}"
+  # VerifyPackageListing "${PACKAGE_FILE_AMD64}" "${package_list}"
   ExtractPackageBz2 "$package_list" "$tmp_package_list"
   GeneratePackageList "$tmp_package_list" "$output_file" "${DEBIAN_PACKAGES}
     ${DEBIAN_PACKAGES_X86}"
@@ -201,7 +201,7 @@ GeneratePackageListI386() {
   local package_list="${BUILD_DIR}/Packages.${DIST}_i386.bz2"
   local tmp_package_list="${BUILD_DIR}/Packages.${DIST}_amd64"
   DownloadOrCopy "${PACKAGE_LIST_I386}" "${package_list}"
-  VerifyPackageListing "${PACKAGE_FILE_I386}" "${package_list}"
+  # VerifyPackageListing "${PACKAGE_FILE_I386}" "${package_list}"
   ExtractPackageBz2 "$package_list" "$tmp_package_list"
   GeneratePackageList "$tmp_package_list" "$output_file" "${DEBIAN_PACKAGES}
     ${DEBIAN_PACKAGES_X86}"
@@ -212,7 +212,7 @@ GeneratePackageListARM() {
   local package_list="${BUILD_DIR}/Packages.${DIST}_arm.bz2"
   local tmp_package_list="${BUILD_DIR}/Packages.${DIST}_arm"
   DownloadOrCopy "${PACKAGE_LIST_ARM}" "${package_list}"
-  VerifyPackageListing "${PACKAGE_FILE_ARM}" "${package_list}"
+  # VerifyPackageListing "${PACKAGE_FILE_ARM}" "${package_list}"
   ExtractPackageBz2 "$package_list" "$tmp_package_list"
   GeneratePackageList "$tmp_package_list" "$output_file" "${DEBIAN_PACKAGES}"
 }
@@ -222,7 +222,7 @@ GeneratePackageListMips() {
   local package_list="${BUILD_DIR}/Packages.${DIST}_mips.bz2"
   local tmp_package_list="${BUILD_DIR}/Packages.${DIST}_mips"
   DownloadOrCopy "${PACKAGE_LIST_MIPS}" "${package_list}"
-  VerifyPackageListing "${PACKAGE_FILE_MIPS}" "${package_list}"
+  # VerifyPackageListing "${PACKAGE_FILE_MIPS}" "${package_list}"
   ExtractPackageBz2 "$package_list" "$tmp_package_list"
   GeneratePackageList "$tmp_package_list" "$output_file" "${DEBIAN_PACKAGES}"
 }
