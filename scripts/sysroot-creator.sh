@@ -505,7 +505,7 @@ UploadSysroot() {
       --repo debian-sysroot-image-creator \
       --tag "v${rev}" \
       --name "${rev}" \
-      --description ""
+      --description "$2"
   github-release upload \
       --user atom \
       --repo debian-sysroot-image-creator \
