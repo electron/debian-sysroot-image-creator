@@ -496,12 +496,22 @@ BuildSysrootAll() {
 UploadSysroot() {
   local rev=$1
   if [ -z "${rev}" ]; then
-    echo "Please specify a revision to upload at."
+    echo "Please specify a version (x.y.z) to upload at."
     exit 1
   fi
   set -x
-  gsutil cp -a public-read "${TARBALL}" \
-      "gs://chrome-linux-sysroot/toolchain/$rev/"
+  github-release release \
+      --user atom \
+      --repo debian-sysroot-image-creator \
+      --tag "v${rev}" \
+      --name "${rev}" \
+      --description ""
+  github-release upload \
+      --user atom \
+      --repo debian-sysroot-image-creator \
+      --tag "v${rev}" \
+      --name "${DISTRO}_${DIST}_${ARCH_LOWER}_sysroot.tgz" \
+      --file "${TARBALL}"
   set +x
 }
 
