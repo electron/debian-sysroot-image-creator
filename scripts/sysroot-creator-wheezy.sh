@@ -85,6 +85,8 @@ DEBIAN_PACKAGES="\
   libkrb5-3 \
   libkrb5-dev \
   libkrb5support0 \
+  libnotify4 \
+  libnotify-dev \
   libnspr4 \
   libnspr4-dev \
   libnss3 \
