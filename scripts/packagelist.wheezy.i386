@@ -68,6 +68,8 @@ main/libg/libgnome-keyring/libgnome-keyring0_3.4.1-1_i386.deb
 main/libg/libgnome-keyring/libgnome-keyring-dev_3.4.1-1_i386.deb
 main/libg/libgpg-error/libgpg-error0_1.10-3.1_i386.deb
 main/libg/libgpg-error/libgpg-error-dev_1.10-3.1_i386.deb
+main/libn/libnotify/libnotify4_0.7.5-1_i386.deb
+main/libn/libnotify/libnotify-dev_0.7.5-1_i386.deb
 main/libn/libnss-db/libnss-db_2.2.3pre1-4_i386.deb
 main/libp/libp11/libp11-2_0.2.8-2_i386.deb
 main/libp/libpng/libpng12-0_1.2.49-1_i386.deb
