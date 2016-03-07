@@ -500,12 +500,6 @@ UploadSysroot() {
     exit 1
   fi
   set -x
-  github-release release \
-      --user atom \
-      --repo debian-sysroot-image-creator \
-      --tag "v${rev}" \
-      --name "${rev}" \
-      --description "$2"
   github-release upload \
       --user atom \
       --repo debian-sysroot-image-creator \
@@ -548,10 +542,22 @@ UploadSysrootMips() {
 #@
 #@    Upload sysroot image for all architectures
 UploadSysrootAll() {
+  local rev=$1
+  if [ -z "${rev}" ]; then
+    echo "Please specify a version (x.y.z) to upload at."
+    exit 1
+  fi
+  set -x
+  github-release release \
+      --user atom \
+      --repo debian-sysroot-image-creator \
+      --tag "v${rev}" \
+      --name "${rev}" \
+      --description "$2"
+  set +x
   RunCommand UploadSysrootAmd64 "$@"
   RunCommand UploadSysrootI386 "$@"
   RunCommand UploadSysrootARM "$@"
-  RunCommand UploadSysrootMips "$@"
 }
 
 #

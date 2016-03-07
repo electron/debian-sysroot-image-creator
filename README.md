@@ -14,5 +14,5 @@ $ export GITHUB_TOKEN=YOURTOKEN
 
 ```bash
 $ ./scripts/sysroot-creator-wheezy.sh BuildSysrootARM
-$ ./scripts/sysroot-creator-wheezy.sh UploadSysrootARM 0.1.0 "release description"
+$ ./scripts/sysroot-creator-wheezy.sh UploadSysrootAll 0.1.0 "release description"
 ```
