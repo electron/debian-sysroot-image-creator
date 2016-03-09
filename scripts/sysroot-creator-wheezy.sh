@@ -108,6 +108,7 @@ DEBIAN_PACKAGES="\
   libpixman-1-dev \
   libpng12-0 \
   libpng12-dev \
+  libpthread-stubs0-dev \
   libpulse0 \
   libpulse-dev \
   libpulse-mainloop-glib0 \
@@ -138,6 +139,7 @@ DEBIAN_PACKAGES="\
   libxdamage1 \
   libxdamage-dev \
   libxdmcp6 \
+  libxdmcp-dev \
   libxext6 \
   libxext-dev \
   libxfixes3 \
@@ -171,6 +173,7 @@ DEBIAN_PACKAGES="\
   x11proto-render-dev \
   x11proto-scrnsaver-dev \
   x11proto-xext-dev \
+  x11proto-xinerama-dev \
   zlib1g \
   zlib1g-dev"
 
