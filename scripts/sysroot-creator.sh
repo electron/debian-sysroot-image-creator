@@ -214,7 +214,8 @@ GeneratePackageListARM() {
   DownloadOrCopy "${PACKAGE_LIST_ARM}" "${package_list}"
   # VerifyPackageListing "${PACKAGE_FILE_ARM}" "${package_list}"
   ExtractPackageBz2 "$package_list" "$tmp_package_list"
-  GeneratePackageList "$tmp_package_list" "$output_file" "${DEBIAN_PACKAGES}"
+  GeneratePackageList "$tmp_package_list" "$output_file" "${DEBIAN_PACKAGES}
+    ${DEBIAN_PACKAGES_ARM}"
 }
 
 GeneratePackageListMips() {
@@ -500,7 +501,6 @@ BuildSysrootAll() {
   RunCommand BuildSysrootAmd64
   RunCommand BuildSysrootI386
   RunCommand BuildSysrootARM
-  RunCommand BuildSysrootMips
 }
 
 UploadSysroot() {
