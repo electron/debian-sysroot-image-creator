@@ -1,0 +1,4 @@
+A set of scripts for creating linux sysroot images copied from Chromium.
+
+Original link:
+https://cs.chromium.org/chromium/src/build/linux/sysroot_scripts/
