@@ -20,6 +20,9 @@ main/c/cairo/libcairo-gobject2_1.14.0-2.1+deb8u2_amd64.deb
 main/c/cairo/libcairo-script-interpreter2_1.14.0-2.1+deb8u2_amd64.deb
 main/c/cups/libcups2_1.7.5-11+deb8u1_amd64.deb
 main/c/cups/libcups2-dev_1.7.5-11+deb8u1_amd64.deb
+main/c/curl/libcurl3_7.38.0-4+deb8u5_amd64.deb
+main/c/curl/libcurl4-nss-dev_7.38.0-4+deb8u5_amd64.deb
+main/c/curl/libcurl4-openssl-dev_7.38.0-4+deb8u5_amd64.deb
 main/d/dbus-glib/libdbus-glib-1-2_0.102-1_amd64.deb
 main/d/dbus/libdbus-1-3_1.8.22-0+deb8u1_amd64.deb
 main/d/dbus/libdbus-1-dev_1.8.22-0+deb8u1_amd64.deb
@@ -95,6 +98,8 @@ main/libg/libgpg-error/libgpg-error0_1.17-3_amd64.deb
 main/libg/libgpg-error/libgpg-error-dev_1.17-3_amd64.deb
 main/libj/libjsoncpp/libjsoncpp0_0.6.0~rc2-3.1_amd64.deb
 main/libj/libjsoncpp/libjsoncpp-dev_0.6.0~rc2-3.1_amd64.deb
+main/libn/libnotify/libnotify4_0.7.6-2_amd64.deb
+main/libn/libnotify/libnotify-dev_0.7.6-2_amd64.deb
 main/libn/libnss-db/libnss-db_2.2.3pre1-5+b3_amd64.deb
 main/libp/libp11/libp11-2_0.2.8-5_amd64.deb
 main/libp/libpng/libpng12-0_1.2.50-2+deb8u3_amd64.deb

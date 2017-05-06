@@ -56,6 +56,9 @@ DEBIAN_PACKAGES="\
   libcomerr2
   libcups2
   libcups2-dev
+  libcurl3
+  libcurl4-nss-dev
+  libcurl4-openssl-dev
   libdbus-1-3
   libdbus-1-dev
   libdbus-glib-1-2
@@ -121,6 +124,8 @@ DEBIAN_PACKAGES="\
   libkrb5-3
   libkrb5-dev
   libkrb5support0
+  libnotify4
+  libnotify-dev
   libnspr4
   libnspr4-dev
   libnss3
