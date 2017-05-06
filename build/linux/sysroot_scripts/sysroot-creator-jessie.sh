@@ -57,7 +57,6 @@ DEBIAN_PACKAGES="\
   libcups2
   libcups2-dev
   libcurl3
-  libcurl4-nss-dev
   libcurl4-openssl-dev
   libdbus-1-3
   libdbus-1-dev

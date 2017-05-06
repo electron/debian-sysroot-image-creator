@@ -21,7 +21,6 @@ main/c/cairo/libcairo-script-interpreter2_1.14.0-2.1+deb8u2_amd64.deb
 main/c/cups/libcups2_1.7.5-11+deb8u1_amd64.deb
 main/c/cups/libcups2-dev_1.7.5-11+deb8u1_amd64.deb
 main/c/curl/libcurl3_7.38.0-4+deb8u5_amd64.deb
-main/c/curl/libcurl4-nss-dev_7.38.0-4+deb8u5_amd64.deb
 main/c/curl/libcurl4-openssl-dev_7.38.0-4+deb8u5_amd64.deb
 main/d/dbus-glib/libdbus-glib-1-2_0.102-1_amd64.deb
 main/d/dbus/libdbus-1-3_1.8.22-0+deb8u1_amd64.deb
