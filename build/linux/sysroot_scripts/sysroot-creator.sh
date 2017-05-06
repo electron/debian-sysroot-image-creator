@@ -692,7 +692,7 @@ VerifyPackageListing() {
   DownloadOrCopy ${release_list_gpg} ${release_file_gpg}
   echo "Verifying: ${release_file} with ${release_file_gpg}"
   set -x
-  gpgv --keyring "${KEYRING_FILE}" "${release_file_gpg}" "${release_file}"
+  # gpgv --keyring "${KEYRING_FILE}" "${release_file_gpg}" "${release_file}"
   set +x
 
   echo "Verifying: ${output_file}"
