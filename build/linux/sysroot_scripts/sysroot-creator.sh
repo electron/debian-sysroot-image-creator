@@ -590,7 +590,7 @@ UploadSysroot() {
   fi
   set -x
   gsutil cp -a public-read "${TARBALL}" \
-      "gs://chrome-linux-sysroot/toolchain/$rev/"
+      "gs://yue-linux-sysroot/toolchain/$rev/"
   set +x
 }
 
