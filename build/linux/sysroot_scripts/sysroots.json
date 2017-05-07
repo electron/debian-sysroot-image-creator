@@ -1,31 +1,31 @@
 {
     "jessie_amd64": {
-        "Revision": "81b7b2adc31e0027704958cd56aa54d1e141be5d",
-        "Sha1Sum": "d9dbe9eb7b9ebd3d02b61dc8860ed7ea7b767d01",
+        "Revision": "2123b52d2c628e62cb671b2713ab605900734887",
+        "Sha1Sum": "374e7dc17c7a0b998b10ebb5e52a039c47f0bc43",
         "SysrootDir": "debian_jessie_amd64-sysroot",
         "Tarball": "debian_jessie_amd64_sysroot.tgz"
     },
     "jessie_arm": {
-        "Revision": "81b7b2adc31e0027704958cd56aa54d1e141be5d",
-        "Sha1Sum": "2cf2a9d5e11ecf119df404516a806826ea087487",
+        "Revision": "2123b52d2c628e62cb671b2713ab605900734887",
+        "Sha1Sum": "3e4ff86fedb18d51009e8e0c75a711d2f98ce657",
         "SysrootDir": "debian_jessie_arm-sysroot",
         "Tarball": "debian_jessie_arm_sysroot.tgz"
     },
     "jessie_arm64": {
-        "Revision": "81b7b2adc31e0027704958cd56aa54d1e141be5d",
-        "Sha1Sum": "66e0d1bfe43e24b8a133e59a13c2577e41cee684",
+        "Revision": "2123b52d2c628e62cb671b2713ab605900734887",
+        "Sha1Sum": "35765b1517c36da652214335e99be07662361ede",
         "SysrootDir": "debian_jessie_arm64-sysroot",
         "Tarball": "debian_jessie_arm64_sysroot.tgz"
     },
     "jessie_i386": {
-        "Revision": "81b7b2adc31e0027704958cd56aa54d1e141be5d",
-        "Sha1Sum": "4a99af4f89bbd535afd03107369b60216bef8ceb",
+        "Revision": "2123b52d2c628e62cb671b2713ab605900734887",
+        "Sha1Sum": "6d939ff08d2bd2d563f458de181701ae19da96fe",
         "SysrootDir": "debian_jessie_i386-sysroot",
         "Tarball": "debian_jessie_i386_sysroot.tgz"
     },
     "jessie_mips": {
-        "Revision": "81b7b2adc31e0027704958cd56aa54d1e141be5d",
-        "Sha1Sum": "12cfea500be4dc75391edaf288bead5537835de3",
+        "Revision": "2123b52d2c628e62cb671b2713ab605900734887",
+        "Sha1Sum": "4e3ef746771fabb0fcd2d25b58b7d2a96ca31407",
         "SysrootDir": "debian_jessie_mips-sysroot",
         "Tarball": "debian_jessie_mips_sysroot.tgz"
     }
