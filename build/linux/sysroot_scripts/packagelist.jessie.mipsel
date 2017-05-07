@@ -97,6 +97,8 @@ main/libp/libpng/libpng12-0_1.2.50-2+deb8u3_mipsel.deb
 main/libp/libpng/libpng12-dev_1.2.50-2+deb8u3_mipsel.deb
 main/libp/libpthread-stubs/libpthread-stubs0-dev_0.3-4_mipsel.deb
 main/libs/libselinux/libselinux1_2.3-2_mipsel.deb
+main/libs/libsoup2.4/libsoup2.4-1_2.48.0-1_mipsel.deb
+main/libs/libsoup2.4/libsoup2.4-dev_2.48.0-1_mipsel.deb
 main/libt/libtasn1-6/libtasn1-6_4.2-3+deb8u2_mipsel.deb
 main/libx/libx11/libx11-6_1.6.2-3_mipsel.deb
 main/libx/libx11/libx11-dev_1.6.2-3_mipsel.deb
@@ -190,6 +192,11 @@ main/w/wayland/libwayland-client0_1.6.0-2_mipsel.deb
 main/w/wayland/libwayland-cursor0_1.6.0-2_mipsel.deb
 main/w/wayland/libwayland-dev_1.6.0-2_mipsel.deb
 main/w/wayland/libwayland-server0_1.6.0-2_mipsel.deb
+main/w/webkitgtk/libjavascriptcoregtk-3.0-0_2.4.9-1~deb8u1_mipsel.deb
+main/w/webkitgtk/libjavascriptcoregtk-3.0-dev_2.4.9-1~deb8u1_mipsel.deb
+main/w/webkitgtk/libwebkitgtk-3.0-0_2.4.9-1~deb8u1_mipsel.deb
+main/w/webkitgtk/libwebkitgtk-3.0-dev_2.4.9-1~deb8u1_mipsel.deb
+main/w/webkitgtk/libwebkitgtk-common-dev_2.4.9-1~deb8u1_all.deb
 main/x/x11proto-composite/x11proto-composite-dev_0.4.2-2_all.deb
 main/x/x11proto-core/x11proto-core-dev_7.0.26-1_all.deb
 main/x/x11proto-damage/x11proto-damage-dev_1.2.1-2_all.deb

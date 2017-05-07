@@ -113,6 +113,8 @@ DEBIAN_PACKAGES="\
   libharfbuzz-gobject0
   libharfbuzz-icu0
   libatomic1
+  libjavascriptcoregtk-3.0-0
+  libjavascriptcoregtk-3.0-dev
   libjsoncpp0
   libjsoncpp-dev
   libk5crypto3
@@ -155,6 +157,8 @@ DEBIAN_PACKAGES="\
   libpulse-dev
   libpulse-mainloop-glib0
   libselinux1
+  libsoup2.4-1
+  libsoup2.4-dev
   libspeechd2
   libspeechd-dev
   libssl1.0.0
@@ -169,6 +173,9 @@ DEBIAN_PACKAGES="\
   libwayland-dev
   libwayland-egl1-mesa
   libwayland-server0
+  libwebkitgtk-3.0-0
+  libwebkitgtk-3.0-dev
+  libwebkitgtk-common-dev
   libx11-6
   libx11-dev
   libx11-xcb1
