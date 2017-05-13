@@ -113,8 +113,8 @@ DEBIAN_PACKAGES="\
   libharfbuzz-gobject0
   libharfbuzz-icu0
   libatomic1
-  libjavascriptcoregtk-3.0-0
-  libjavascriptcoregtk-3.0-dev
+  libjavascriptcoregtk-4.0-18
+  libjavascriptcoregtk-4.0-dev
   libjsoncpp0
   libjsoncpp-dev
   libk5crypto3
@@ -173,8 +173,8 @@ DEBIAN_PACKAGES="\
   libwayland-dev
   libwayland-egl1-mesa
   libwayland-server0
-  libwebkit2gtk-3.0-25
-  libwebkit2gtk-3.0-dev
+  libwebkit2gtk-4.0-37
+  libwebkit2gtk-4.0-dev
   libwebkitgtk-common-dev
   libx11-6
   libx11-dev
