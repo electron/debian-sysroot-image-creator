@@ -200,8 +200,8 @@ main/w/wayland/libwayland-dev_1.6.0-2_i386.deb
 main/w/wayland/libwayland-server0_1.6.0-2_i386.deb
 main/w/webkitgtk/libjavascriptcoregtk-3.0-0_2.4.9-1~deb8u1_i386.deb
 main/w/webkitgtk/libjavascriptcoregtk-3.0-dev_2.4.9-1~deb8u1_i386.deb
-main/w/webkitgtk/libwebkitgtk-3.0-0_2.4.9-1~deb8u1_i386.deb
-main/w/webkitgtk/libwebkitgtk-3.0-dev_2.4.9-1~deb8u1_i386.deb
+main/w/webkitgtk/libwebkit2gtk-3.0-25_2.4.9-1~deb8u1_i386.deb
+main/w/webkitgtk/libwebkit2gtk-3.0-dev_2.4.9-1~deb8u1_i386.deb
 main/w/webkitgtk/libwebkitgtk-common-dev_2.4.9-1~deb8u1_all.deb
 main/x/x11proto-composite/x11proto-composite-dev_0.4.2-2_all.deb
 main/x/x11proto-core/x11proto-core-dev_7.0.26-1_all.deb

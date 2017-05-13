@@ -173,8 +173,8 @@ DEBIAN_PACKAGES="\
   libwayland-dev
   libwayland-egl1-mesa
   libwayland-server0
-  libwebkitgtk-3.0-0
-  libwebkitgtk-3.0-dev
+  libwebkit2gtk-3.0-25
+  libwebkit2gtk-3.0-dev
   libwebkitgtk-common-dev
   libx11-6
   libx11-dev
