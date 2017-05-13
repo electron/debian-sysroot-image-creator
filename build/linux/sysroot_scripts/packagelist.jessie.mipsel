@@ -196,6 +196,10 @@ main/w/webkit2gtk/libjavascriptcoregtk-4.0-18_2.6.2+dfsg1-4_mipsel.deb
 main/w/webkit2gtk/libjavascriptcoregtk-4.0-dev_2.6.2+dfsg1-4_mipsel.deb
 main/w/webkit2gtk/libwebkit2gtk-4.0-37_2.6.2+dfsg1-4_mipsel.deb
 main/w/webkit2gtk/libwebkit2gtk-4.0-dev_2.6.2+dfsg1-4_mipsel.deb
+main/w/webkitgtk/libjavascriptcoregtk-3.0-0_2.4.9-1~deb8u1_mipsel.deb
+main/w/webkitgtk/libjavascriptcoregtk-3.0-dev_2.4.9-1~deb8u1_mipsel.deb
+main/w/webkitgtk/libwebkitgtk-3.0-0_2.4.9-1~deb8u1_mipsel.deb
+main/w/webkitgtk/libwebkitgtk-3.0-dev_2.4.9-1~deb8u1_mipsel.deb
 main/w/webkitgtk/libwebkitgtk-common-dev_2.4.9-1~deb8u1_all.deb
 main/x/x11proto-composite/x11proto-composite-dev_0.4.2-2_all.deb
 main/x/x11proto-core/x11proto-core-dev_7.0.26-1_all.deb
