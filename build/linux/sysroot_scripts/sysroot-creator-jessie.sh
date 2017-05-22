@@ -58,6 +58,7 @@ DEBIAN_PACKAGES="\
   libcups2-dev
   libcurl3
   libcurl4-openssl-dev
+  libdatrie1
   libdbus-1-3
   libdbus-1-dev
   libdbus-glib-1-2
@@ -275,7 +276,6 @@ DEBIAN_PACKAGES_ARM="
 "
 
 DEBIAN_PACKAGES_ARM64="
-  libdatrie1
   libitm1
 "
 

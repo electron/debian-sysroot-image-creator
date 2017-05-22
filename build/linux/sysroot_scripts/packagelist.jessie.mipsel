@@ -77,6 +77,7 @@ main/k/krb5/libkrb5-dev_1.12.1+dfsg-19+deb8u2_mipsel.deb
 main/k/krb5/libkrb5support0_1.12.1+dfsg-19+deb8u2_mipsel.deb
 main/libc/libcap2/libcap2_2.24-8_mipsel.deb
 main/libc/libcap2/libcap-dev_2.24-8_mipsel.deb
+main/libd/libdatrie/libdatrie1_0.2.8-1_mipsel.deb
 main/libd/libdrm/libdrm2_2.4.58-2_mipsel.deb
 main/libd/libdrm/libdrm-dev_2.4.58-2_mipsel.deb
 main/libd/libdrm/libdrm-nouveau2_2.4.58-2_mipsel.deb

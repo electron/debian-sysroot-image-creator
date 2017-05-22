@@ -84,6 +84,7 @@ main/k/krb5/libkrb5-dev_1.12.1+dfsg-19+deb8u2_amd64.deb
 main/k/krb5/libkrb5support0_1.12.1+dfsg-19+deb8u2_amd64.deb
 main/libc/libcap2/libcap2_2.24-8_amd64.deb
 main/libc/libcap2/libcap-dev_2.24-8_amd64.deb
+main/libd/libdatrie/libdatrie1_0.2.8-1_amd64.deb
 main/libd/libdrm/libdrm2_2.4.58-2_amd64.deb
 main/libd/libdrm/libdrm-dev_2.4.58-2_amd64.deb
 main/libd/libdrm/libdrm-intel1_2.4.58-2_amd64.deb
