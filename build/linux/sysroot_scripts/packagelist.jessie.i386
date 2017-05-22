@@ -163,6 +163,8 @@ main/m/mesa/libgl1-mesa-glx_10.3.2-1+deb8u1_i386.deb
 main/m/mesa/libglapi-mesa_10.3.2-1+deb8u1_i386.deb
 main/m/mesa/libwayland-egl1-mesa_10.3.2-1+deb8u1_i386.deb
 main/m/mesa/mesa-common-dev_10.3.2-1+deb8u1_i386.deb
+main/n/nettle/libhogweed2_2.7.1-5+deb8u2_i386.deb
+main/n/nettle/libnettle4_2.7.1-5+deb8u2_i386.deb
 main/n/nspr/libnspr4_4.12-1+debu8u1_i386.deb
 main/n/nspr/libnspr4-dev_4.12-1+debu8u1_i386.deb
 main/n/nss/libnss3_3.26-1+debu8u1_i386.deb

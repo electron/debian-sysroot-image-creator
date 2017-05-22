@@ -112,6 +112,7 @@ DEBIAN_PACKAGES="\
   libharfbuzz-dev
   libharfbuzz-gobject0
   libharfbuzz-icu0
+  libhogweed2
   libatomic1
   libjavascriptcoregtk-4.0-18
   libjavascriptcoregtk-4.0-dev
@@ -127,6 +128,7 @@ DEBIAN_PACKAGES="\
   libkrb5-3
   libkrb5-dev
   libkrb5support0
+  libnettle4
   libnotify4
   libnotify-dev
   libnspr4
@@ -272,9 +274,7 @@ DEBIAN_PACKAGES_ARM64="
   libdatrie1
   libgmp10
   libgraphite2-3
-  libhogweed2
   libitm1
-  libnettle4
   libthai0
 "
 
