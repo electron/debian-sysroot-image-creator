@@ -589,8 +589,8 @@ UploadSysroot() {
     exit 1
   fi
   set -x
-  gsutil cp -a public-read "${TARBALL}" \
-      "gs://yue-linux-sysroot/toolchain/$rev/"
+  s3cmd put --acl-public "${TARBALL}" \
+      "s3://gh-contractor-zcbenz/toolchain/$rev/"
   set +x
 }
 
