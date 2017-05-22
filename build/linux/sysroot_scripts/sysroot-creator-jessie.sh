@@ -93,6 +93,7 @@ DEBIAN_PACKAGES="\
   libglapi-mesa
   libglib2.0-0
   libglib2.0-dev
+  libgmp10
   libgnome-keyring0
   libgnome-keyring-dev
   libgnutls-openssl27
@@ -102,6 +103,7 @@ DEBIAN_PACKAGES="\
   libgomp1
   libgpg-error0
   libgpg-error-dev
+  libgraphite2-3
   libgssapi-krb5-2
   libgssrpc4
   libgtk-3-0
@@ -170,6 +172,7 @@ DEBIAN_PACKAGES="\
   libstdc++6
   libstdc++-4.8-dev
   libtasn1-6
+  libthai0
   libudev-dev
   libudev1
   libwayland-client0
@@ -270,12 +273,10 @@ DEBIAN_PACKAGES_ARM="
   libdrm-omap1
   libubsan0
 "
+
 DEBIAN_PACKAGES_ARM64="
   libdatrie1
-  libgmp10
-  libgraphite2-3
   libitm1
-  libthai0
 "
 
 . "${SCRIPT_DIR}/sysroot-creator.sh"

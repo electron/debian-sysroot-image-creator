@@ -57,10 +57,12 @@ main/g/glib2.0/libglib2.0-0_2.42.1-1+b1_amd64.deb
 main/g/glib2.0/libglib2.0-dev_2.42.1-1+b1_amd64.deb
 main/g/glibc/libc6_2.19-18+deb8u9_amd64.deb
 main/g/glibc/libc6-dev_2.19-18+deb8u9_amd64.deb
+main/g/gmp/libgmp10_6.0.0+dfsg-6_amd64.deb
 main/g/gnutls28/libgnutls28-dev_3.3.8-6+deb8u5_amd64.deb
 main/g/gnutls28/libgnutls-deb0-28_3.3.8-6+deb8u5_amd64.deb
 main/g/gnutls28/libgnutls-openssl27_3.3.8-6+deb8u5_amd64.deb
 main/g/gnutls28/libgnutlsxx28_3.3.8-6+deb8u5_amd64.deb
+main/g/graphite2/libgraphite2-3_1.3.6-1~deb8u1_amd64.deb
 main/g/gtk+2.0/libgtk2.0-0_2.24.25-3+deb8u1_amd64.deb
 main/g/gtk+2.0/libgtk2.0-dev_2.24.25-3+deb8u1_amd64.deb
 main/g/gtk+3.0/libgtk-3-0_3.14.5-1+deb8u1_amd64.deb
@@ -108,6 +110,7 @@ main/libs/libselinux/libselinux1_2.3-2_amd64.deb
 main/libs/libsoup2.4/libsoup2.4-1_2.48.0-1_amd64.deb
 main/libs/libsoup2.4/libsoup2.4-dev_2.48.0-1_amd64.deb
 main/libt/libtasn1-6/libtasn1-6_4.2-3+deb8u2_amd64.deb
+main/libt/libthai/libthai0_0.1.21-1_amd64.deb
 main/libx/libx11/libx11-6_1.6.2-3_amd64.deb
 main/libx/libx11/libx11-dev_1.6.2-3_amd64.deb
 main/libx/libx11/libx11-xcb1_1.6.2-3_amd64.deb
