@@ -116,6 +116,7 @@ DEBIAN_PACKAGES="\
   libharfbuzz-gobject0
   libharfbuzz-icu0
   libhogweed2
+  libicu52
   libatomic1
   libjavascriptcoregtk-4.0-18
   libjavascriptcoregtk-4.0-dev
@@ -186,6 +187,7 @@ DEBIAN_PACKAGES="\
   libwebkitgtk-3.0-0
   libwebkitgtk-3.0-dev
   libwebkitgtk-common-dev
+  libwebp5
   libx11-6
   libx11-dev
   libx11-xcb1

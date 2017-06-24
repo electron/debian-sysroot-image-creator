@@ -69,6 +69,7 @@ main/h/harfbuzz/libharfbuzz0b_0.9.35-2_i386.deb
 main/h/harfbuzz/libharfbuzz-dev_0.9.35-2_i386.deb
 main/h/harfbuzz/libharfbuzz-gobject0_0.9.35-2_i386.deb
 main/h/harfbuzz/libharfbuzz-icu0_0.9.35-2_i386.deb
+main/i/icu/libicu52_52.1-8+deb8u5_i386.deb
 main/k/keyutils/libkeyutils1_1.5.9-5+b1_i386.deb
 main/k/krb5/krb5-multidev_1.12.1+dfsg-19+deb8u2_i386.deb
 main/k/krb5/libgssapi-krb5-2_1.12.1+dfsg-19+deb8u2_i386.deb
@@ -110,6 +111,7 @@ main/libs/libsoup2.4/libsoup2.4-1_2.48.0-1_i386.deb
 main/libs/libsoup2.4/libsoup2.4-dev_2.48.0-1_i386.deb
 main/libt/libtasn1-6/libtasn1-6_4.2-3+deb8u2_i386.deb
 main/libt/libthai/libthai0_0.1.21-1_i386.deb
+main/libw/libwebp/libwebp5_0.4.1-1.2+b2_i386.deb
 main/libx/libx11/libx11-6_1.6.2-3_i386.deb
 main/libx/libx11/libx11-dev_1.6.2-3_i386.deb
 main/libx/libx11/libx11-xcb1_1.6.2-3_i386.deb
