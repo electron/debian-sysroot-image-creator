@@ -196,6 +196,7 @@ http://ftp.jp.debian.org/debian/pool/main/w/wayland/libwayland-cursor0_1.12.0-1_
 http://ftp.jp.debian.org/debian/pool/main/w/wayland/libwayland-dev_1.12.0-1_mips64el.deb
 http://ftp.jp.debian.org/debian/pool/main/w/wayland/libwayland-server0_1.12.0-1_mips64el.deb
 http://ftp.jp.debian.org/debian/pool/main/w/wayland-protocols/wayland-protocols_1.7-1_all.deb
+http://ftp.jp.debian.org/debian/pool/main/w/webkit2gtk/libjavascriptcoregtk-4.0-18_2.16.6-0+deb9u1_mips64el.deb
 http://ftp.jp.debian.org/debian/pool/main/w/webkit2gtk/libjavascriptcoregtk-4.0-dev_2.16.6-0+deb9u1_mips64el.deb
 http://ftp.jp.debian.org/debian/pool/main/w/webkit2gtk/libwebkit2gtk-4.0-37_2.16.6-0+deb9u1_mips64el.deb
 http://ftp.jp.debian.org/debian/pool/main/w/webkit2gtk/libwebkit2gtk-4.0-dev_2.16.6-0+deb9u1_mips64el.deb
