@@ -60,6 +60,7 @@ DEBIAN_PACKAGES="\
   libcups2-dev
   libcupsimage2
   libcupsimage2-dev
+  libdatrie1
   libdbus-1-3
   libdbus-1-dev
   libdbus-glib-1-2
@@ -100,6 +101,7 @@ DEBIAN_PACKAGES="\
   libglapi-mesa
   libglib2.0-0
   libglib2.0-dev
+  libgmp10
   libgnome-keyring0
   libgnome-keyring-dev
   libgnutls-dane0
@@ -122,8 +124,14 @@ DEBIAN_PACKAGES="\
   libharfbuzz-dev
   libharfbuzz-gobject0
   libharfbuzz-icu0
+  libhogweed2
+  libicu52
   libatomic1
   libjsoncpp1
+  libjavascriptcoregtk-4.0-dev
+  libjavascriptcoregtk-3.0-0
+  libjavascriptcoregtk-3.0-dev
+  libjsoncpp0
   libjsoncpp-dev
   libk5crypto3
   libkadm5clnt-mit11
@@ -133,6 +141,9 @@ DEBIAN_PACKAGES="\
   libkrb5-3
   libkrb5-dev
   libkrb5support0
+  libnettle4
+  libnotify4
+  libnotify-dev
   libnspr4
   libnspr4-dev
   libnss3
@@ -165,6 +176,8 @@ DEBIAN_PACKAGES="\
   libpulse-dev
   libpulse-mainloop-glib0
   libselinux1
+  libsoup2.4-1
+  libsoup2.4-dev
   libspeechd2
   libspeechd-dev
   libssl1.0.2
@@ -173,6 +186,7 @@ DEBIAN_PACKAGES="\
   libstdc++6
   libstdc++-6-dev
   libtasn1-6
+  libthai0
   libudev-dev
   libudev1
   libva1
@@ -188,6 +202,12 @@ DEBIAN_PACKAGES="\
   libwayland-dev
   libwayland-egl1-mesa
   libwayland-server0
+  libwebkit2gtk-4.0-37
+  libwebkit2gtk-4.0-dev
+  libwebkitgtk-3.0-0
+  libwebkitgtk-3.0-dev
+  libwebkitgtk-common-dev
+  libwebp5
   libx11-6
   libx11-dev
   libx11-xcb1
