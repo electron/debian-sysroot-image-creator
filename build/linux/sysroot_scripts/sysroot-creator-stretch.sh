@@ -9,9 +9,9 @@ DISTRO=debian
 DIST=stretch
 
 APT_SOURCES_LIST="\
-http://ftp.us.debian.org/debian/ stretch main
+http://ftp.jp.debian.org/debian/ stretch main
 http://security.debian.org/ stretch/updates main
-http://ftp.us.debian.org/debian/ stretch-updates main"
+http://ftp.jp.debian.org/debian/ stretch-updates main"
 
 # gpg keyring file generated using:
 #   export KEYS="518E17E1 46925553 2B90D010 C857C906 F66AEC98 8AE22BA9 1A7B6500"
@@ -124,15 +124,15 @@ DEBIAN_PACKAGES="\
   libharfbuzz-dev
   libharfbuzz-gobject0
   libharfbuzz-icu0
-  libhogweed2
-  libicu52
+  libhogweed4
+  libicu57
   libatomic1
   libjsoncpp1
+  libjsoncpp-dev
+  libjavascriptcoregtk-4.0-18
   libjavascriptcoregtk-4.0-dev
   libjavascriptcoregtk-3.0-0
   libjavascriptcoregtk-3.0-dev
-  libjsoncpp0
-  libjsoncpp-dev
   libk5crypto3
   libkadm5clnt-mit11
   libkadm5srv-mit11
@@ -141,7 +141,7 @@ DEBIAN_PACKAGES="\
   libkrb5-3
   libkrb5-dev
   libkrb5support0
-  libnettle4
+  libnettle6
   libnotify4
   libnotify-dev
   libnspr4
@@ -206,8 +206,7 @@ DEBIAN_PACKAGES="\
   libwebkit2gtk-4.0-dev
   libwebkitgtk-3.0-0
   libwebkitgtk-3.0-dev
-  libwebkitgtk-common-dev
-  libwebp5
+  libwebp6
   libx11-6
   libx11-dev
   libx11-xcb1
