@@ -161,7 +161,7 @@ SanityCheck() {
 
   # This is where the staging sysroot is.
   INSTALL_ROOT="${BUILD_DIR}/${DIST}_${ARCH_LOWER}_staging"
-  TARBALL="${BUILD_DIR}/${DISTRO}_${DIST}_${ARCH_LOWER}_sysroot.tar.xz"
+  TARBALL="${BUILD_DIR}/${DISTRO}_${DIST}_${ARCH_LOWER}_sysroot.tgz"
 
   if ! mkdir -p "${INSTALL_ROOT}" ; then
     echo "ERROR: ${INSTALL_ROOT} can't be created."
@@ -184,7 +184,7 @@ ClearInstallDir() {
 
 CreateTarBall() {
   Banner "Creating tarball ${TARBALL}"
-  tar -I "xz -9 -T0" -cf ${TARBALL} -C ${INSTALL_ROOT} .
+  tar zcf ${TARBALL} -C ${INSTALL_ROOT} .
 }
 
 ExtractPackageGz() {
@@ -299,10 +299,10 @@ HacksAndPatchesCommon() {
   # still support distros using the unversioned library.  This hack
   # can be removed once support for Ubuntu Trusty and Debian Jessie
   # are dropped.
-  ${strip} -R .gnu.version_d -R .gnu.version \
-    "${INSTALL_ROOT}/lib/${arch}-${os}/libdbus-1.so.3"
-  cp "${SCRIPT_DIR}/libdbus-1-3-symbols" \
-    "${INSTALL_ROOT}/debian/libdbus-1-3/DEBIAN/symbols"
+  # ${strip} -R .gnu.version_d -R .gnu.version \
+  #   "${INSTALL_ROOT}/lib/${arch}-${os}/libdbus-1.so.3"
+  # cp "${SCRIPT_DIR}/libdbus-1-3-symbols" \
+  #   "${INSTALL_ROOT}/debian/libdbus-1-3/DEBIAN/symbols"
 
   # This is for chrome's ./build/linux/pkg-config-wrapper
   # which overwrites PKG_CONFIG_LIBDIR internally
