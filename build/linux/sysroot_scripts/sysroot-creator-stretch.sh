@@ -43,10 +43,14 @@ DEBIAN_PACKAGES="\
   libattr1
   libavahi-client3
   libavahi-common3
+  libblkid1
   libbluetooth3
   libbluetooth-dev
+  liblz4-1
+  liblzma5
   libbrlapi0.6
   libbrlapi-dev
+  libbsd0
   libc6
   libc6-dev
   libcairo2
@@ -126,6 +130,7 @@ DEBIAN_PACKAGES="\
   libharfbuzz-icu0
   libhogweed4
   libicu57
+  libidn11
   libatomic1
   libjsoncpp1
   libjsoncpp-dev
@@ -141,6 +146,7 @@ DEBIAN_PACKAGES="\
   libkrb5-3
   libkrb5-dev
   libkrb5support0
+  libmount1
   libnettle6
   libnotify4
   libnotify-dev
@@ -185,10 +191,12 @@ DEBIAN_PACKAGES="\
   libssl-dev
   libstdc++6
   libstdc++-6-dev
+  libsystemd0
   libtasn1-6
   libthai0
   libudev-dev
   libudev1
+  libuuid1
   libva1
   libva-dev
   libva-drm1

@@ -21,8 +21,8 @@ http://ftp.jp.debian.org/debian/pool/main/c/cups/libcups2-dev_2.2.1-8_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/c/cups/libcupsimage2_2.2.1-8_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/c/cups/libcupsimage2-dev_2.2.1-8_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/d/dbus-glib/libdbus-glib-1-2_0.108-2_armhf.deb
-http://ftp.jp.debian.org/debian/pool/main/d/dbus/libdbus-1-3_1.10.22-0+deb9u1_armhf.deb
-http://ftp.jp.debian.org/debian/pool/main/d/dbus/libdbus-1-dev_1.10.22-0+deb9u1_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/d/dbus/libdbus-1-3_1.10.24-0+deb9u1_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/d/dbus/libdbus-1-dev_1.10.24-0+deb9u1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/d/d-conf/libdconf1_0.26.0-2+b1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/d/d-conf/libdconf-dev_0.26.0-2+b1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/e/e2fsprogs/comerr-dev_2.1-1.43.4-2_armhf.deb
@@ -57,7 +57,7 @@ http://ftp.jp.debian.org/debian/pool/main/h/harfbuzz/libharfbuzz0b_1.4.2-1_armhf
 http://ftp.jp.debian.org/debian/pool/main/h/harfbuzz/libharfbuzz-dev_1.4.2-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/h/harfbuzz/libharfbuzz-gobject0_1.4.2-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/h/harfbuzz/libharfbuzz-icu0_1.4.2-1_armhf.deb
-http://ftp.jp.debian.org/debian/pool/main/i/icu/libicu57_57.1-6_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/i/icu/libicu57_57.1-6+deb9u1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/k/keyutils/libkeyutils1_1.5.9-9_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/k/krb5/krb5-multidev_1.15-1+deb9u1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/k/krb5/libgssapi-krb5-2_1.15-1+deb9u1_armhf.deb
@@ -69,6 +69,7 @@ http://ftp.jp.debian.org/debian/pool/main/k/krb5/libkdb5-8_1.15-1+deb9u1_armhf.d
 http://ftp.jp.debian.org/debian/pool/main/k/krb5/libkrb5-3_1.15-1+deb9u1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/k/krb5/libkrb5-dev_1.15-1+deb9u1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/k/krb5/libkrb5support0_1.15-1+deb9u1_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/libb/libbsd/libbsd0_0.8.3-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libc/libcap2/libcap2_2.25-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libc/libcap2/libcap-dev_2.25-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libd/libdatrie/libdatrie1_0.2.10-4+b1_armhf.deb
@@ -89,6 +90,7 @@ http://ftp.jp.debian.org/debian/pool/main/libg/libgnome-keyring/libgnome-keyring
 http://ftp.jp.debian.org/debian/pool/main/libg/libgnome-keyring/libgnome-keyring-dev_3.12.0-1+b2_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error0_1.26-2_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error-dev_1.26-2_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/libi/libidn/libidn11_1.33-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libj/libjsoncpp/libjsoncpp1_1.7.4-3_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libj/libjsoncpp/libjsoncpp-dev_1.7.4-3_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libn/libnotify/libnotify4_0.7.7-2_armhf.deb
@@ -129,8 +131,6 @@ http://ftp.jp.debian.org/debian/pool/main/libx/libxcb/libxcb-shm0-dev_1.12-1_arm
 http://ftp.jp.debian.org/debian/pool/main/libx/libxcb/libxcb-sync1_1.12-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxcomposite/libxcomposite1_0.4.4-2_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxcomposite/libxcomposite-dev_0.4.4-2_armhf.deb
-http://ftp.jp.debian.org/debian/pool/main/libx/libxcursor/libxcursor1_1.1.14-1+b4_armhf.deb
-http://ftp.jp.debian.org/debian/pool/main/libx/libxcursor/libxcursor-dev_1.1.14-1+b4_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxdamage/libxdamage1_1.1.4-2+b3_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxdamage/libxdamage-dev_1.1.4-2+b3_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxdmcp/libxdmcp6_1.1.2-3_armhf.deb
@@ -143,8 +143,8 @@ http://ftp.jp.debian.org/debian/pool/main/libx/libxi/libxi6_1.7.9-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxi/libxi-dev_1.7.9-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxinerama/libxinerama1_1.1.3-1+b3_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxinerama/libxinerama-dev_1.1.3-1+b3_armhf.deb
-http://ftp.jp.debian.org/debian/pool/main/libx/libxkbcommon/libxkbcommon0_0.7.1-1_armhf.deb
-http://ftp.jp.debian.org/debian/pool/main/libx/libxkbcommon/libxkbcommon-dev_0.7.1-1_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/libx/libxkbcommon/libxkbcommon0_0.7.1-2~deb9u1_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/libx/libxkbcommon/libxkbcommon-dev_0.7.1-2~deb9u1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxrandr/libxrandr2_1.5.1-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxrandr/libxrandr-dev_1.5.1-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxrender/libxrender1_0.9.10-1_armhf.deb
@@ -157,6 +157,7 @@ http://ftp.jp.debian.org/debian/pool/main/libx/libxt/libxt-dev_1.1.5-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxtst/libxtst6_1.2.3-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxtst/libxtst-dev_1.2.3-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxxf86vm/libxxf86vm1_1.1.4-1+b2_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/l/lz4/liblz4-1_0.0~r131-2+b1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/m/mesa/libegl1-mesa_13.0.6-1+b2_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/m/mesa/libegl1-mesa-dev_13.0.6-1+b2_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/m/mesa/libgbm1_13.0.6-1+b2_armhf.deb
@@ -195,8 +196,12 @@ http://ftp.jp.debian.org/debian/pool/main/p/pulseaudio/libpulse-mainloop-glib0_1
 http://ftp.jp.debian.org/debian/pool/main/s/speech-dispatcher/libspeechd2_0.8.6-4+deb9u1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/s/speech-dispatcher/libspeechd-dev_0.8.6-4+deb9u1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/s/speech-dispatcher/speech-dispatcher_0.8.6-4+deb9u1_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/s/systemd/libsystemd0_232-25+deb9u1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/s/systemd/libudev1_232-25+deb9u1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/s/systemd/libudev-dev_232-25+deb9u1_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/u/util-linux/libblkid1_2.29.2-1_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/u/util-linux/libmount1_2.29.2-1_armhf.deb
+http://ftp.jp.debian.org/debian/pool/main/u/util-linux/libuuid1_2.29.2-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/w/wayland/libwayland-client0_1.12.0-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/w/wayland/libwayland-cursor0_1.12.0-1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/w/wayland/libwayland-dev_1.12.0-1_armhf.deb
@@ -222,6 +227,7 @@ http://ftp.jp.debian.org/debian/pool/main/x/x11proto-render/x11proto-render-dev_
 http://ftp.jp.debian.org/debian/pool/main/x/x11proto-scrnsaver/x11proto-scrnsaver-dev_1.2.2-1_all.deb
 http://ftp.jp.debian.org/debian/pool/main/x/x11proto-xext/x11proto-xext-dev_7.3.0-1_all.deb
 http://ftp.jp.debian.org/debian/pool/main/x/x11proto-xinerama/x11proto-xinerama-dev_1.2.1-2_all.deb
+http://ftp.jp.debian.org/debian/pool/main/x/xz-utils/liblzma5_5.2.2-1.2+b1_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/z/zlib/zlib1g_1.2.8.dfsg-5_armhf.deb
 http://ftp.jp.debian.org/debian/pool/main/z/zlib/zlib1g-dev_1.2.8.dfsg-5_armhf.deb
 http://security.debian.org/pool/updates/main/b/bluez/libbluetooth3_5.43-2+deb9u1_armhf.deb
@@ -241,6 +247,8 @@ http://security.debian.org/pool/updates/main/libg/libgcrypt20/libgcrypt20_1.7.6-
 http://security.debian.org/pool/updates/main/libg/libgcrypt20/libgcrypt20-dev_1.7.6-2+deb9u2_armhf.deb
 http://security.debian.org/pool/updates/main/libs/libsoup2.4/libsoup2.4-1_2.56.0-2+deb9u1_armhf.deb
 http://security.debian.org/pool/updates/main/libs/libsoup2.4/libsoup2.4-dev_2.56.0-2+deb9u1_armhf.deb
+http://security.debian.org/pool/updates/main/libx/libxcursor/libxcursor1_1.1.14-1+deb9u1_armhf.deb
+http://security.debian.org/pool/updates/main/libx/libxcursor/libxcursor-dev_1.1.14-1+deb9u1_armhf.deb
 http://security.debian.org/pool/updates/main/l/linux/linux-libc-dev_4.9.30-2+deb9u5_armhf.deb
 http://security.debian.org/pool/updates/main/n/nss/libnss3_3.26.2-1.1+deb9u1_armhf.deb
 http://security.debian.org/pool/updates/main/n/nss/libnss3-dev_3.26.2-1.1+deb9u1_armhf.deb
