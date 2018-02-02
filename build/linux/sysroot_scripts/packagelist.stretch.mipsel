@@ -31,6 +31,7 @@ http://ftp.jp.debian.org/debian/pool/main/e/e2fsprogs/comerr-dev_2.1-1.43.4-2_mi
 http://ftp.jp.debian.org/debian/pool/main/e/e2fsprogs/libcomerr2_1.43.4-2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/e/elfutils/libelf1_0.168-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/e/elfutils/libelf-dev_0.168-1_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/e/enchant/libenchant1c2a_1.6.0-11+b1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/e/expat/libexpat1_2.2.0-2+deb9u1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/e/expat/libexpat1-dev_2.2.0-2+deb9u1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/f/fontconfig/libfontconfig1_2.11.0-6.7+b1_mipsel.deb
@@ -60,6 +61,8 @@ http://ftp.jp.debian.org/debian/pool/main/g/gnutls28/libgnutls-openssl27_3.5.8-5
 http://ftp.jp.debian.org/debian/pool/main/g/gnutls28/libgnutlsxx28_3.5.8-5+deb9u3_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/g/graphite2/libgraphite2-3_1.3.10-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/g/graphite2/libgraphite2-dev_1.3.10-1_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/g/gst-plugins-base1.0/libgstreamer-plugins-base1.0-0_1.10.4-1_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/g/gstreamer1.0/libgstreamer1.0-0_1.10.4-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/g/gtk+2.0/libgtk2.0-0_2.24.31-2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/g/gtk+2.0/libgtk2.0-dev_2.24.31-2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/g/gtk+3.0/libgtk-3-0_3.22.11-1_mipsel.deb
@@ -68,6 +71,7 @@ http://ftp.jp.debian.org/debian/pool/main/h/harfbuzz/libharfbuzz0b_1.4.2-1_mipse
 http://ftp.jp.debian.org/debian/pool/main/h/harfbuzz/libharfbuzz-dev_1.4.2-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/h/harfbuzz/libharfbuzz-gobject0_1.4.2-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/h/harfbuzz/libharfbuzz-icu0_1.4.2-1_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/h/hyphen/libhyphen0_2.8.8-5_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/i/icu/libicu57_57.1-6+deb9u1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/k/keyutils/libkeyutils1_1.5.9-9_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/k/krb5/krb5-multidev_1.15-1+deb9u1_mipsel.deb
@@ -100,6 +104,8 @@ http://ftp.jp.debian.org/debian/pool/main/libg/libgnome-keyring/libgnome-keyring
 http://ftp.jp.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error0_1.26-2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libg/libgpg-error/libgpg-error-dev_1.26-2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libi/libidn/libidn11_1.33-1_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/libj/libjpeg-turbo/libjpeg62-turbo_1.5.1-2_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/libj/libjpeg-turbo/libjpeg-dev_1.5.1-2_all.deb
 http://ftp.jp.debian.org/debian/pool/main/libj/libjsoncpp/libjsoncpp1_1.7.4-3_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libj/libjsoncpp/libjsoncpp-dev_1.7.4-3_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libn/libnotify/libnotify4_0.7.7-2_mipsel.deb
@@ -109,6 +115,8 @@ http://ftp.jp.debian.org/debian/pool/main/libp/libp11/libp11-2_0.4.3-1_mipsel.de
 http://ftp.jp.debian.org/debian/pool/main/libp/libpng1.6/libpng16-16_1.6.28-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libp/libpng1.6/libpng-dev_1.6.28-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libp/libpthread-stubs/libpthread-stubs0-dev_0.3-4_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/libs/libsecret/libsecret-1-0_0.18.5-3.1_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/libs/libsecret/libsecret-common_0.18.5-3.1_all.deb
 http://ftp.jp.debian.org/debian/pool/main/libs/libselinux/libselinux1_2.6-3+b3_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libs/libsoup2.4/libsoup2.4-1_2.56.0-2+deb9u1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libs/libsoup2.4/libsoup2.4-dev_2.56.0-2+deb9u1_mipsel.deb
@@ -140,6 +148,7 @@ http://ftp.jp.debian.org/debian/pool/main/libx/libxcb/libxcb-render0-dev_1.12-1_
 http://ftp.jp.debian.org/debian/pool/main/libx/libxcb/libxcb-shm0_1.12-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxcb/libxcb-shm0-dev_1.12-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxcb/libxcb-sync1_1.12-1_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/libx/libxcb/libxcb-xfixes0_1.12-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxcomposite/libxcomposite1_0.4.4-2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxcomposite/libxcomposite-dev_0.4.4-2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxcursor/libxcursor1_1.1.14-1+b4_mipsel.deb
@@ -165,6 +174,7 @@ http://ftp.jp.debian.org/debian/pool/main/libx/libxrandr/libxrandr-dev_1.5.1-1_m
 http://ftp.jp.debian.org/debian/pool/main/libx/libxrender/libxrender1_0.9.10-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxrender/libxrender-dev_0.9.10-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxshmfence/libxshmfence1_1.2-1+b2_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/libx/libxslt/libxslt1.1_1.1.29-2.1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxss/libxss1_1.2.2-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxss/libxss-dev_1.2.2-1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/libx/libxt/libxt6_1.1.5-1_mipsel.deb
@@ -181,6 +191,7 @@ http://ftp.jp.debian.org/debian/pool/main/m/mesa/libgbm-dev_13.0.6-1+b2_mipsel.d
 http://ftp.jp.debian.org/debian/pool/main/m/mesa/libgl1-mesa-dev_13.0.6-1+b2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/m/mesa/libgl1-mesa-glx_13.0.6-1+b2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/m/mesa/libglapi-mesa_13.0.6-1+b2_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/m/mesa/libgles2-mesa_13.0.6-1+b2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/m/mesa/libwayland-egl1-mesa_13.0.6-1+b2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/m/mesa/mesa-common-dev_13.0.6-1+b2_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/n/nettle/libhogweed4_3.3-1+b2_mipsel.deb
@@ -217,6 +228,7 @@ http://ftp.jp.debian.org/debian/pool/main/p/pulseaudio/libpulse-mainloop-glib0_1
 http://ftp.jp.debian.org/debian/pool/main/s/speech-dispatcher/libspeechd2_0.8.6-4+deb9u1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/s/speech-dispatcher/libspeechd-dev_0.8.6-4+deb9u1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/s/speech-dispatcher/speech-dispatcher_0.8.6-4+deb9u1_mipsel.deb
+http://ftp.jp.debian.org/debian/pool/main/s/sqlite3/libsqlite3-0_3.16.2-5+deb9u1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/s/systemd/libsystemd0_232-25+deb9u1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/s/systemd/libudev1_232-25+deb9u1_mipsel.deb
 http://ftp.jp.debian.org/debian/pool/main/s/systemd/libudev-dev_232-25+deb9u1_mipsel.deb

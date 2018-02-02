@@ -76,6 +76,7 @@ DEBIAN_PACKAGES="\
   libdrm-radeon1
   libegl1-mesa
   libegl1-mesa-dev
+  libenchant1c2a
   libelf1
   libelf-dev
   libepoxy0
@@ -102,6 +103,7 @@ DEBIAN_PACKAGES="\
   libgl1-mesa-dev
   libgl1-mesa-glx
   libglapi-mesa
+  libgles2-mesa
   libglib2.0-0
   libglib2.0-dev
   libgmp10
@@ -118,6 +120,8 @@ DEBIAN_PACKAGES="\
   libgraphite2-3
   libgraphite2-dev
   libgssapi-krb5-2
+  libgstreamer1.0-0
+  libgstreamer-plugins-base1.0-0
   libgssrpc4
   libgtk-3-0
   libgtk-3-dev
@@ -128,9 +132,12 @@ DEBIAN_PACKAGES="\
   libharfbuzz-gobject0
   libharfbuzz-icu0
   libhogweed4
+  libhyphen0
   libicu57
   libidn11
   libatomic1
+  libjpeg62-turbo
+  libjpeg-dev
   libjsoncpp1
   libjsoncpp-dev
   libjavascriptcoregtk-4.0-18
@@ -180,11 +187,14 @@ DEBIAN_PACKAGES="\
   libpulse0
   libpulse-dev
   libpulse-mainloop-glib0
+  libsecret-1-0
+  libsecret-common
   libselinux1
   libsoup2.4-1
   libsoup2.4-dev
   libspeechd2
   libspeechd-dev
+  libsqlite3-0
   libssl1.0.2
   libssl1.1
   libssl-dev
@@ -218,6 +228,8 @@ DEBIAN_PACKAGES="\
   libx11-dev
   libx11-xcb1
   libx11-xcb-dev
+  libxcb-xfixes0
+  libxslt1.1
   libxml2
   libxml2-dev
   libxau6
