@@ -212,6 +212,7 @@ http://ftp.jp.debian.org/debian/pool/main/o/openssl1.0/libssl1.0.2_1.0.2l-2+deb9
 http://ftp.jp.debian.org/debian/pool/main/o/openssl/libssl1.1_1.1.0f-3+deb9u1_arm64.deb
 http://ftp.jp.debian.org/debian/pool/main/o/openssl/libssl-dev_1.1.0f-3+deb9u1_arm64.deb
 http://ftp.jp.debian.org/debian/pool/main/o/orbit2/liborbit2_2.14.19-2+b1_arm64.deb
+http://ftp.jp.debian.org/debian/pool/main/o/orc/liborc-0.4-0_0.4.26-2_arm64.deb
 http://ftp.jp.debian.org/debian/pool/main/p/p11-kit/libp11-kit0_0.23.3-2_arm64.deb
 http://ftp.jp.debian.org/debian/pool/main/p/pam/libpam0g_1.1.8-3.6_arm64.deb
 http://ftp.jp.debian.org/debian/pool/main/p/pam/libpam0g-dev_1.1.8-3.6_arm64.deb

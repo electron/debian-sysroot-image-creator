@@ -161,6 +161,7 @@ DEBIAN_PACKAGES="\
   libnss3
   libnss3-dev
   libnss-db
+  liborc-0.4-0
   liborbit2
   libp11-2
   libp11-kit0
