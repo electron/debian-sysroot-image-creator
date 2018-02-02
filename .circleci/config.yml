@@ -8,3 +8,6 @@ jobs:
       - checkout
       - run: sudo pip install s3cmd
       - run: ./build/linux/sysroot_scripts/build_and_upload.py
+      - store_artifacts:
+          path: build/linux/sysroot_scripts/sysroots.json
+          destination: sysroots.json
