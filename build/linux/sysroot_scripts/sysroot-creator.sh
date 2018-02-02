@@ -561,7 +561,9 @@ UploadSysroot() {
   fi
   set -x
   s3cmd put --acl-public "${TARBALL}" \
-      "s3://gh-contractor-zcbenz/toolchain/$rev/"
+      --access_key=${ELECTRON_S3_ACCESS_KEY} \
+      --secret_key=${ELECTRON_S3_SECRET_KEY} \
+      "s3://${ELECTRON_S3_BUCKET}/toolchain/$rev/"
   set +x
 }
 

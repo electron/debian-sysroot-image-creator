@@ -1,0 +1,9 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: ubuntu:16.04
+    steps:
+      - checkout
+      - run: ./build/linux/sysroot_scripts/build_and_upload.py
