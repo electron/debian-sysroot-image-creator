@@ -3,7 +3,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu:16.04
+      - image: circleci/python:2.7-stretch
     steps:
       - checkout
+      - run: sudo pip install s3cmd
       - run: ./build/linux/sysroot_scripts/build_and_upload.py
