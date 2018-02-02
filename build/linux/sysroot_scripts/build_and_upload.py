@@ -18,8 +18,7 @@ import subprocess
 import sys
 
 def run_script(args):
-  fnull = open(os.devnull, 'w')
-  subprocess.check_call(args, stdout=fnull, stderr=fnull)
+  subprocess.check_call(args)
 
 def sha1sumfile(filename):
   sha1 = hashlib.sha1()
