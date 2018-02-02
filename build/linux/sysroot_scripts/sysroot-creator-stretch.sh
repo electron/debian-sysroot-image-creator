@@ -10,7 +10,6 @@ DIST=stretch
 
 APT_SOURCES_LIST="\
 http://ftp.jp.debian.org/debian/ stretch main
-http://security.debian.org/ stretch/updates main
 http://ftp.jp.debian.org/debian/ stretch-updates main"
 
 # gpg keyring file generated using:
@@ -219,6 +218,8 @@ DEBIAN_PACKAGES="\
   libx11-dev
   libx11-xcb1
   libx11-xcb-dev
+  libxml2
+  libxml2-dev
   libxau6
   libaudit1
   libxau-dev
