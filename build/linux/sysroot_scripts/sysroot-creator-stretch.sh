@@ -33,6 +33,8 @@ DEBIAN_PACKAGES="\
   krb5-multidev
   libasound2
   libasound2-dev
+  libappindicator3-1
+  libappindicator3-dev
   libatk-bridge2.0-0
   libatk-bridge2.0-dev
   libatk1.0-0
