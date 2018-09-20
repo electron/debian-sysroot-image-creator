@@ -250,7 +250,7 @@ DEBIAN_PACKAGES="\
   libtiff5
   libudev-dev
   libudev1
-  libunbound2
+  libunbound8
   libunistring2
   libuuid1
   libva-dev
