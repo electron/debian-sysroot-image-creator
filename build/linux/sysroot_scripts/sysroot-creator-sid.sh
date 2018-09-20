@@ -6,17 +6,15 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 DISTRO=debian
-DIST=stretch
+DIST=sid
 
-APT_SOURCES_LIST="\
-http://ftp.jp.debian.org/debian/ stretch main
-http://ftp.jp.debian.org/debian/ stretch-updates main"
+APT_SOURCES_LIST="http://ftp.us.debian.org/debian/ sid main"
 
 # gpg keyring file generated using:
 #   export KEYS="518E17E1 46925553 2B90D010 C857C906 F66AEC98 8AE22BA9 1A7B6500"
 #   gpg --recv-keys $KEYS
-#   gpg --output ./debian-archive-stretch-stable.gpg --export $KEYS
-KEYRING_FILE="${SCRIPT_DIR}/debian-archive-stretch-stable.gpg"
+#   gpg --output ./debian-archive-sid-stable.gpg --export $KEYS
+KEYRING_FILE="${SCRIPT_DIR}/debian-archive-sid-stable.gpg"
 
 HAS_ARCH_AMD64=1
 HAS_ARCH_I386=1
@@ -31,257 +29,286 @@ HAS_ARCH_MIPS64EL=1
 DEBIAN_PACKAGES="\
   comerr-dev
   krb5-multidev
-  libasound2
-  libasound2-dev
+  libappindicator-dev
+  libappindicator1
   libappindicator3-1
   libappindicator3-dev
+  libasound2
+  libasound2-dev
+  libasyncns0
   libatk-bridge2.0-0
   libatk-bridge2.0-dev
   libatk1.0-0
   libatk1.0-dev
+  libatomic1
   libatspi2.0-0
   libatspi2.0-dev
   libattr1
+  libaudit1
   libavahi-client3
   libavahi-common3
   libblkid1
-  libbluetooth3
   libbluetooth-dev
-  liblz4-1
-  liblzma5
-  libbrlapi0.6
+  libbluetooth3
   libbrlapi-dev
+  libbrlapi0.6
   libbsd0
   libc6
   libc6-dev
-  libcairo2
-  libcairo2-dev
   libcairo-gobject2
   libcairo-script-interpreter2
+  libcairo2
+  libcairo2-dev
   libcap-dev
+  libcap-ng0
   libcap2
-  libcomerr2
+  libcolord2
+  libcom-err2
   libcups2
   libcups2-dev
   libcupsimage2
   libcupsimage2-dev
   libdatrie1
+  libdb5.3
   libdbus-1-3
   libdbus-1-dev
   libdbus-glib-1-2
-  libdconf-dev
-  libdconf1
-  libdrm2
-  libdrm-dev
+  libdbusmenu-glib-dev
+  libdbusmenu-glib4
+  libdbusmenu-gtk3-4
+  libdbusmenu-gtk4
   libdrm-amdgpu1
+  libdrm-dev
   libdrm-nouveau2
   libdrm-radeon1
+  libdrm2
+  libegl1
   libegl1-mesa
   libegl1-mesa-dev
-  libenchant1c2a
-  libelf1
   libelf-dev
-  libepoxy0
+  libelf1
   libepoxy-dev
+  libepoxy0
+  libevent-2.1-6
   libexpat1
   libexpat1-dev
-  libffi6
   libffi-dev
+  libffi6
+  libflac-dev
+  libflac8
   libfontconfig1
   libfontconfig1-dev
   libfreetype6
   libfreetype6-dev
-  libgbm1
   libgbm-dev
+  libgbm1
   libgcc-6-dev
   libgcc1
-  libgconf-2-4
-  libgconf2-4
-  libgconf2-dev
   libgcrypt20
   libgcrypt20-dev
   libgdk-pixbuf2.0-0
   libgdk-pixbuf2.0-dev
+  libgl1
   libgl1-mesa-dev
   libgl1-mesa-glx
   libglapi-mesa
-  libgles2-mesa
+  libgles2
   libglib2.0-0
   libglib2.0-dev
+  libglvnd-dev
+  libglvnd0
+  libglx0
   libgmp10
-  libgnome-keyring0
   libgnome-keyring-dev
+  libgnome-keyring0
   libgnutls-dane0
   libgnutls-openssl27
-  libgnutlsxx28
   libgnutls28-dev
   libgnutls30
+  libgnutlsxx28
   libgomp1
-  libgpg-error0
   libgpg-error-dev
+  libgpg-error0
   libgraphite2-3
   libgraphite2-dev
   libgssapi-krb5-2
-  libgstreamer1.0-0
-  libgstreamer-plugins-base1.0-0
   libgssrpc4
   libgtk-3-0
   libgtk-3-dev
   libgtk2.0-0
   libgtk2.0-dev
-  libharfbuzz0b
   libharfbuzz-dev
   libharfbuzz-gobject0
   libharfbuzz-icu0
+  libharfbuzz0b
   libhogweed4
-  libhyphen0
+  libice6
   libicu57
+  libidl-2-0
   libidn11
-  libatomic1
+  libidn2-0
+  libindicator3-7
+  libindicator7
+  libjbig0
   libjpeg62-turbo
-  libjpeg-dev
-  libjsoncpp1
+  libjpeg62-turbo-dev
+  libjson-glib-1.0-0
   libjsoncpp-dev
-  libjavascriptcoregtk-4.0-18
-  libjavascriptcoregtk-4.0-dev
-  libjavascriptcoregtk-3.0-0
-  libjavascriptcoregtk-3.0-dev
+  libjsoncpp1
   libk5crypto3
   libkadm5clnt-mit11
   libkadm5srv-mit11
-  libkdb5-8
+  libkdb5-9
   libkeyutils1
   libkrb5-3
   libkrb5-dev
   libkrb5support0
+  liblcms2-2
+  libltdl7
+  liblz4-1
+  liblzma5
+  liblzo2-2
   libmount1
   libnettle6
-  libnotify4
-  libnotify-dev
   libnspr4
   libnspr4-dev
+  libnss-db
   libnss3
   libnss3-dev
-  libnss-db
-  liborc-0.4-0
+  libogg0
+  libopengl0
+  libopus-dev
+  libopus0
+  liborbit-2-0
   liborbit2
-  libp11-2
   libp11-kit0
   libpam0g
   libpam0g-dev
   libpango-1.0-0
   libpango1.0-dev
-  libpangoft2-1.0-0
   libpangocairo-1.0-0
+  libpangoft2-1.0-0
   libpangox-1.0-0
   libpangoxft-1.0-0
-  libpci3
   libpci-dev
-  libpcre3
+  libpci3
+  libpciaccess0
   libpcre16-3
-  libpcre32-3
+  libpcre3
   libpcre3-dev
+  libpcre32-3
   libpcrecpp0v5
   libpixman-1-0
   libpixman-1-dev
-  libpng16-16
   libpng-dev
+  libpng16-16
   libpthread-stubs0-dev
-  libpulse0
   libpulse-dev
   libpulse-mainloop-glib0
-  libsecret-1-0
-  libsecret-common
+  libpulse0
+  libre2-3
+  libre2-dev
+  librest-0.7-0
   libselinux1
+  libsm6
+  libsnappy-dev
+  libsnappy1v5
+  libsndfile1
+  libsoup-gnome2.4-1
   libsoup2.4-1
-  libsoup2.4-dev
-  libspeechd2
   libspeechd-dev
+  libspeechd2
   libsqlite3-0
+  libssl-dev
   libssl1.0.2
   libssl1.1
-  libssl-dev
-  libstdc++6
   libstdc++-6-dev
+  libstdc++6
   libsystemd0
   libtasn1-6
   libthai0
+  libtiff5
   libudev-dev
   libudev1
+  libunbound2
+  libunistring2
   libuuid1
-  libva1
   libva-dev
-  libva-drm1
-  libva-egl1
-  libva-glx1
-  libva-tpi1
-  libva-wayland1
-  libva-x11-1
+  libva-drm2
+  libva-glx2
+  libva-wayland2
+  libva-x11-2
+  libva2
+  libvorbis0a
+  libvorbisenc2
+  libvpx-dev
+  libvpx5
   libwayland-client0
   libwayland-cursor0
   libwayland-dev
   libwayland-egl1-mesa
   libwayland-server0
-  libwebkit2gtk-4.0-37
-  libwebkit2gtk-4.0-dev
-  libwebkitgtk-3.0-0
-  libwebkitgtk-3.0-dev
+  libwebp-dev
   libwebp6
+  libwebpdemux2
+  libwebpmux3
+  libwrap0
   libx11-6
   libx11-dev
-  libx11-xcb1
   libx11-xcb-dev
-  libxcb-xfixes0
-  libxslt1.1
-  libxml2
-  libxml2-dev
-  libxau6
-  libaudit1
+  libx11-xcb1
   libxau-dev
-  libxcb1
-  libxcb1-dev
+  libxau6
   libxcb-dri2-0
   libxcb-dri3-0
   libxcb-glx0
   libxcb-present0
   libxcb-render0
   libxcb-render0-dev
-  libxcb-sync1
   libxcb-shm0
   libxcb-shm0-dev
-  libxcomposite1
+  libxcb-sync1
+  libxcb-xfixes0
+  libxcb1
+  libxcb1-dev
   libxcomposite-dev
-  libxcursor1
+  libxcomposite1
   libxcursor-dev
-  libxdamage1
+  libxcursor1
   libxdamage-dev
-  libxdmcp6
+  libxdamage1
   libxdmcp-dev
-  libxext6
+  libxdmcp6
   libxext-dev
-  libxfixes3
+  libxext6
   libxfixes-dev
-  libxi6
+  libxfixes3
+  libxft2
   libxi-dev
-  libxinerama1
+  libxi6
   libxinerama-dev
-  libxkbcommon0
+  libxinerama1
   libxkbcommon-dev
-  libxrandr2
+  libxkbcommon0
+  libxml2
   libxrandr-dev
-  libxrender1
+  libxrandr2
   libxrender-dev
+  libxrender1
   libxshmfence1
-  libxss1
+  libxslt1-dev
+  libxslt1.1
   libxss-dev
-  libxt6
+  libxss1
   libxt-dev
-  libxtst6
+  libxt6
   libxtst-dev
+  libxtst6
   libxxf86vm1
   linux-libc-dev
   mesa-common-dev
   speech-dispatcher
+  uuid-dev
   wayland-protocols
   x11proto-composite-dev
   x11proto-core-dev
@@ -316,6 +343,7 @@ DEBIAN_PACKAGES_X86="
 
 DEBIAN_PACKAGES_ARM="
   libasan3
+  libdrm-etnaviv1
   libdrm-exynos1
   libdrm-freedreno1
   libdrm-omap1
@@ -325,7 +353,6 @@ DEBIAN_PACKAGES_ARM="
 
 DEBIAN_PACKAGES_ARM64="
   libasan3
-  libdatrie1
   libdrm-freedreno1
   libdrm-tegra0
   libgmp10

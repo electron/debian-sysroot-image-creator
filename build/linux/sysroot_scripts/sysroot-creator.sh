@@ -3,13 +3,13 @@
 # found in the LICENSE file.
 #
 # This script should not be run directly but sourced by the other
-# scripts (e.g. sysroot-creator-jessie.sh).  Its up to the parent scripts
+# scripts (e.g. sysroot-creator-sid.sh).  Its up to the parent scripts
 # to define certain environment variables: e.g.
-#  DISTRO=ubuntu
-#  DIST=jessie
+#  DISTRO=debian
+#  DIST=sid
 #  # Similar in syntax to /etc/apt/sources.list
-#  APT_SOURCES_LIST="http://ftp.us.debian.org/debian/ jessie main"
-#  KEYRING_FILE=debian-archive-jessie-stable.gpg
+#  APT_SOURCES_LIST="http://ftp.us.debian.org/debian/ sid main"
+#  KEYRING_FILE=debian-archive-sid-stable.gpg
 #  DEBIAN_PACKAGES="gcc libz libssl"
 
 #@ This script builds Debian/Ubuntu sysroot images for building Google Chrome.
@@ -51,13 +51,13 @@ readonly HAS_ARCH_ARM64=${HAS_ARCH_ARM64:=0}
 readonly HAS_ARCH_MIPS=${HAS_ARCH_MIPS:=0}
 readonly HAS_ARCH_MIPS64EL=${HAS_ARCH_MIPS64EL:=0}
 
-readonly REQUIRED_TOOLS="curl gunzip"
+readonly REQUIRED_TOOLS="curl xzcat"
 
 ######################################################################
 # Package Config
 ######################################################################
 
-readonly PACKAGES_EXT=gz
+readonly PACKAGES_EXT=xz
 readonly RELEASE_FILE="Release"
 readonly RELEASE_FILE_GPG="Release.gpg"
 
@@ -106,7 +106,7 @@ DownloadOrCopy() {
     # instances of sysroot-creator.sh from trying to write to the same file.
     # --create-dirs is added in case there are slashes in the filename, as can
     # happen with the "debian/security" release class.
-    curl "$1" --create-dirs -o "${2}.partial.$$"
+    curl -L "$1" --create-dirs -o "${2}.partial.$$"
     mv "${2}.partial.$$" $2
   else
     SubBanner "copying from $1"
@@ -161,7 +161,7 @@ SanityCheck() {
 
   # This is where the staging sysroot is.
   INSTALL_ROOT="${BUILD_DIR}/${DIST}_${ARCH_LOWER}_staging"
-  TARBALL="${BUILD_DIR}/${DISTRO}_${DIST}_${ARCH_LOWER}_sysroot.tgz"
+  TARBALL="${BUILD_DIR}/${DISTRO}_${DIST}_${ARCH_LOWER}_sysroot.tar.xz"
 
   if ! mkdir -p "${INSTALL_ROOT}" ; then
     echo "ERROR: ${INSTALL_ROOT} can't be created."
@@ -184,14 +184,14 @@ ClearInstallDir() {
 
 CreateTarBall() {
   Banner "Creating tarball ${TARBALL}"
-  tar zcf ${TARBALL} -C ${INSTALL_ROOT} .
+  tar -I "xz -9 -T0" -cf ${TARBALL} -C ${INSTALL_ROOT} .
 }
 
-ExtractPackageGz() {
+ExtractPackageXz() {
   local src_file="$1"
   local dst_file="$2"
   local repo="$3"
-  gunzip -c "${src_file}" | egrep '^(Package:|Filename:|SHA256:) ' |
+  xzcat "${src_file}" | egrep '^(Package:|Filename:|SHA256:) ' |
     sed "s|Filename: |Filename: ${repo}|" > "${dst_file}"
 }
 
@@ -210,7 +210,7 @@ GeneratePackageListDist() {
 
   DownloadOrCopy "${package_list_arch}" "${package_list}"
   VerifyPackageListing "${package_file_arch}" "${package_list}" ${repo} ${dist}
-  ExtractPackageGz "${package_list}" "${TMP_PACKAGE_LIST}" ${repo}
+  ExtractPackageXz "${package_list}" "${TMP_PACKAGE_LIST}" ${repo}
 }
 
 GeneratePackageListCommon() {
@@ -304,6 +304,17 @@ HacksAndPatchesCommon() {
   # cp "${SCRIPT_DIR}/libdbus-1-3-symbols" \
   #   "${INSTALL_ROOT}/debian/libdbus-1-3/DEBIAN/symbols"
 
+  # Glibc 2.27 introduced some new optimizations to several math functions, but
+  # it will be a while before it makes it into all supported distros.  Luckily,
+  # glibc maintains ABI compatibility with previous versions, so the old symbols
+  # are still there.
+  # TODO(thomasanderson): Remove this once glibc 2.27 is available on all
+  # supported distros.
+  local math_h="${INSTALL_ROOT}/usr/include/math.h"
+  local libm_so="${INSTALL_ROOT}/lib/${arch}-${os}/libm.so.6"
+  nm -D --defined-only --with-symbol-versions "${libm_so}" | \
+    "${SCRIPT_DIR}/find_incompatible_glibc_symbols.py" >> "${math_h}"
+
   # This is for chrome's ./build/linux/pkg-config-wrapper
   # which overwrites PKG_CONFIG_LIBDIR internally
   SubBanner "Move pkgconfig scripts"
@@ -329,7 +340,9 @@ HacksAndPatchesARM() {
 
 
 HacksAndPatchesARM64() {
-  HacksAndPatchesCommon aarch64 linux-gnu aarch64-linux-gnu-strip
+  # Use the unstripped libdbus for arm64 to prevent linker errors.
+  # https://bugs.chromium.org/p/webrtc/issues/detail?id=8535
+  HacksAndPatchesCommon aarch64 linux-gnu true
 }
 
 
@@ -418,6 +431,59 @@ CleanupJailSymlinks() {
   cd "$SAVEDPWD"
 }
 
+
+VerifyLibraryDepsCommon() {
+  local arch=$1
+  local os=$2
+  local find_dirs=(
+    "${INSTALL_ROOT}/lib/${arch}-${os}/"
+    "${INSTALL_ROOT}/usr/lib/${arch}-${os}/"
+  )
+  local needed_libs="$(
+    find ${find_dirs[*]} -name "*\.so*" -type f -exec file {} \; | \
+      grep ': ELF' | sed 's/^\(.*\): .*$/\1/' | xargs readelf -d | \
+      grep NEEDED | sort | uniq | sed 's/^.*Shared library: \[\(.*\)\]$/\1/g')"
+  local all_libs="$(find ${find_dirs[*]} -printf '%f\n')"
+  local missing_libs="$(grep -vFxf <(echo "${all_libs}") \
+    <(echo "${needed_libs}"))"
+  if [ ! -z "${missing_libs}" ]; then
+    echo "Missing libraries:"
+    echo "${missing_libs}"
+    exit 1
+  fi
+}
+
+
+VerifyLibraryDepsAmd64() {
+  VerifyLibraryDepsCommon x86_64 linux-gnu
+}
+
+
+VerifyLibraryDepsI386() {
+  VerifyLibraryDepsCommon i386 linux-gnu
+}
+
+
+VerifyLibraryDepsARM() {
+  VerifyLibraryDepsCommon arm linux-gnueabihf
+}
+
+
+VerifyLibraryDepsARM64() {
+  VerifyLibraryDepsCommon aarch64 linux-gnu
+}
+
+
+VerifyLibraryDepsMips() {
+  VerifyLibraryDepsCommon mipsel linux-gnu
+}
+
+
+VerifyLibraryDepsMips64el() {
+  VerifyLibraryDepsCommon mips64el linux-gnuabi64
+}
+
+
 #@
 #@ BuildSysrootAmd64
 #@
@@ -435,6 +501,7 @@ BuildSysrootAmd64() {
   InstallIntoSysroot ${files_and_sha256sums}
   CleanupJailSymlinks
   HacksAndPatchesAmd64
+  VerifyLibraryDepsAmd64
   CreateTarBall
 }
 
@@ -455,6 +522,7 @@ BuildSysrootI386() {
   InstallIntoSysroot ${files_and_sha256sums}
   CleanupJailSymlinks
   HacksAndPatchesI386
+  VerifyLibraryDepsI386
   CreateTarBall
 }
 
@@ -475,6 +543,7 @@ BuildSysrootARM() {
   InstallIntoSysroot ${files_and_sha256sums}
   CleanupJailSymlinks
   HacksAndPatchesARM
+  VerifyLibraryDepsARM
   CreateTarBall
 }
 
@@ -495,6 +564,7 @@ BuildSysrootARM64() {
   InstallIntoSysroot ${files_and_sha256sums}
   CleanupJailSymlinks
   HacksAndPatchesARM64
+  VerifyLibraryDepsARM64
   CreateTarBall
 }
 
@@ -516,6 +586,7 @@ BuildSysrootMips() {
   InstallIntoSysroot ${files_and_sha256sums}
   CleanupJailSymlinks
   HacksAndPatchesMips
+  VerifyLibraryDepsMips
   CreateTarBall
 }
 
@@ -537,6 +608,7 @@ BuildSysrootMips64el() {
   InstallIntoSysroot ${files_and_sha256sums}
   CleanupJailSymlinks
   HacksAndPatchesMips64el
+  VerifyLibraryDepsMips64el
   CreateTarBall
 }
 
@@ -657,7 +729,7 @@ CheckForDebianGPGKeyring() {
 #
 # VerifyPackageListing
 #
-#     Verifies the downloaded Packages.bz2 file has the right checksums.
+#     Verifies the downloaded Packages.xz file has the right checksums.
 #
 VerifyPackageListing() {
   local file_path="$1"
