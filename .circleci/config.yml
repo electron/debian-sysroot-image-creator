@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:2.7-stretch
+    resource_class: 2xlarge
     steps:
       - checkout
       - run: sudo pip install s3cmd
