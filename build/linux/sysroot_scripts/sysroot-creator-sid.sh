@@ -383,6 +383,7 @@ DEBIAN_PACKAGES_ARM="
 DEBIAN_PACKAGES_ARM64="
   libasan3
   libdrm-freedreno1
+  libdrm-etnaviv1
   libdrm-tegra0
   libgmp10
   libitm1
