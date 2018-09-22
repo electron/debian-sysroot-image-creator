@@ -17,9 +17,12 @@ import string
 import subprocess
 import sys
 
-def run_script(args):
-  fnull = open(os.devnull, 'w')
-  subprocess.check_call(args, stdout=fnull, stderr=fnull)
+def run_script(args, out=True):
+  if out:
+    subprocess.check_call(args)
+  else:
+    fnull = open(os.devnull, 'w')
+    subprocess.check_call(args, stdout=fnull, stderr=fnull)
 
 def sha1sumfile(filename):
   sha1 = hashlib.sha1()
@@ -75,6 +78,7 @@ def main():
     distro = get_proc_output([script_path, 'PrintDistro'])
     release = get_proc_output([script_path, 'PrintRelease'])
     architectures = get_proc_output([script_path, 'PrintArchitectures'])
+    architectures = 'Amd64'
     for arch in architectures.split('\n'):
       proc = multiprocessing.Process(target=build_and_upload,
                                      args=(script_path, distro, release, arch,
