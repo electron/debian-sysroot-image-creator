@@ -330,7 +330,6 @@ DEBIAN_PACKAGES="\
   libxxf86vm1
   linux-libc-dev
   mesa-common-dev
-  shared-mime-info
   speech-dispatcher
   uuid-dev
   wayland-protocols
