@@ -355,6 +355,13 @@ DEBIAN_PACKAGES+="
   libnotify-dev
 "
 
+# These are packages that are required by Chromium, but not as at the versions
+# that Chromium last updated their sysroots.
+DEBIAN_PACKAGES+="
+  shared-mime-info
+  libxcb-glx0-dev
+"
+
 DEBIAN_PACKAGES_AMD64="
   liblsan0
   libtsan0
