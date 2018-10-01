@@ -358,9 +358,10 @@ DEBIAN_PACKAGES+="
 # These are packages that are required by Chromium, but not as at the versions
 # that Chromium last updated their sysroots.
 DEBIAN_PACKAGES+="
-  shared-mime-info
-  libxcb-glx0-dev
   libxcb-dri2-0-dev
+  libxcb-glx0-dev
+  libxxf86vm-dev
+  shared-mime-info
 "
 
 DEBIAN_PACKAGES_AMD64="
