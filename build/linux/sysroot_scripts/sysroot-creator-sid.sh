@@ -360,6 +360,7 @@ DEBIAN_PACKAGES+="
 DEBIAN_PACKAGES+="
   shared-mime-info
   libxcb-glx0-dev
+  libxcb-dri2-0-dev
 "
 
 DEBIAN_PACKAGES_AMD64="
