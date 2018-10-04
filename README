@@ -1,7 +1,0 @@
-A set of scripts for creating linux sysroot images, copied from Chromium.
-
-This fork adds some necessary dependencies for Electron, and upload the
-images to Electron's S3 bucket.
-
-Original link:
-https://cs.chromium.org/chromium/src/build/linux/sysroot_scripts/
