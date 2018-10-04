@@ -362,7 +362,6 @@ DEBIAN_PACKAGES+="
   libxcb-glx0-dev
   libxxf86vm-dev
   shared-mime-info
-  libuuid1
 "
 
 DEBIAN_PACKAGES_AMD64="
