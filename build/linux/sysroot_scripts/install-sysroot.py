@@ -31,8 +31,8 @@ import urllib2
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-URL_PREFIX = 'https://commondatastorage.googleapis.com'
-URL_PATH = 'chrome-linux-sysroot/toolchain'
+URL_PREFIX = 'http://s3.amazonaws.com'
+URL_PATH = 'gh-contractor-zcbenz/toolchain'
 
 VALID_ARCHS = ('arm', 'arm64', 'i386', 'amd64', 'mips', 'mips64el')
 
