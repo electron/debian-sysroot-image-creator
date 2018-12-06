@@ -217,6 +217,8 @@ DEBIAN_PACKAGES="\
   libpcre3-dev
   libpcre32-3
   libpcrecpp0v5
+  libpipewire-0.2-1
+  libpipewire-0.2-dev
   libpixman-1-0
   libpixman-1-dev
   libpng-dev
@@ -236,6 +238,7 @@ DEBIAN_PACKAGES="\
   libsndfile1
   libsoup-gnome2.4-1
   libsoup2.4-1
+  libspa-lib-0.1-dev
   libspeechd-dev
   libspeechd2
   libsqlite3-0
@@ -282,8 +285,10 @@ DEBIAN_PACKAGES="\
   libxau-dev
   libxau6
   libxcb-dri2-0
+  libxcb-dri2-0-dev
   libxcb-dri3-0
   libxcb-glx0
+  libxcb-glx0-dev
   libxcb-present0
   libxcb-render0
   libxcb-render0-dev
@@ -327,9 +332,11 @@ DEBIAN_PACKAGES="\
   libxt6
   libxtst-dev
   libxtst6
+  libxxf86vm-dev
   libxxf86vm1
   linux-libc-dev
   mesa-common-dev
+  shared-mime-info
   speech-dispatcher
   uuid-dev
   wayland-protocols
@@ -347,21 +354,6 @@ DEBIAN_PACKAGES="\
   x11proto-xinerama-dev
   zlib1g
   zlib1g-dev
-"
-
-# Electron-specific dependencies
-DEBIAN_PACKAGES+="
-  libnotify4
-  libnotify-dev
-"
-
-# These are packages that are required by Chromium, but not as at the versions
-# that Chromium last updated their sysroots.
-DEBIAN_PACKAGES+="
-  libxcb-dri2-0-dev
-  libxcb-glx0-dev
-  libxxf86vm-dev
-  shared-mime-info
 "
 
 DEBIAN_PACKAGES_AMD64="
@@ -391,8 +383,8 @@ DEBIAN_PACKAGES_ARM="
 
 DEBIAN_PACKAGES_ARM64="
   libasan3
-  libdrm-freedreno1
   libdrm-etnaviv1
+  libdrm-freedreno1
   libdrm-tegra0
   libgmp10
   libitm1

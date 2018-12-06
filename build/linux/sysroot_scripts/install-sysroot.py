@@ -31,8 +31,8 @@ import urllib2
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-URL_PREFIX = 'http://s3.amazonaws.com'
-URL_PATH = 'gh-contractor-zcbenz/toolchain'
+URL_PREFIX = 'https://commondatastorage.googleapis.com'
+URL_PATH = 'chrome-linux-sysroot/toolchain'
 
 VALID_ARCHS = ('arm', 'arm64', 'i386', 'amd64', 'mips', 'mips64el')
 
@@ -106,7 +106,6 @@ def GetSysrootDict(target_platform, target_arch):
 
 def InstallSysroot(target_platform, target_arch):
   sysroot_dict = GetSysrootDict(target_platform, target_arch)
-  revision = sysroot_dict['Revision']
   tarball_filename = sysroot_dict['Tarball']
   tarball_sha1sum = sysroot_dict['Sha1Sum']
   # TODO(thestig) Consider putting this elsewhere to avoid having to recreate
@@ -114,7 +113,8 @@ def InstallSysroot(target_platform, target_arch):
   linux_dir = os.path.dirname(SCRIPT_DIR)
   sysroot = os.path.join(linux_dir, sysroot_dict['SysrootDir'])
 
-  url = '%s/%s/%s/%s' % (URL_PREFIX, URL_PATH, revision, tarball_filename)
+  url = '%s/%s/%s/%s' % (URL_PREFIX, URL_PATH, tarball_sha1sum,
+                         tarball_filename)
 
   stamp = os.path.join(sysroot, '.stamp')
   if os.path.exists(stamp):
