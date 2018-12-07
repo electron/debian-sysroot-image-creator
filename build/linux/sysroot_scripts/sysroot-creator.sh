@@ -288,10 +288,12 @@ HacksAndPatchesCommon() {
   # still support distros using the unversioned library.  This hack
   # can be removed once support for Ubuntu Trusty and Debian Jessie
   # are dropped.
-  ${strip} -R .gnu.version_d -R .gnu.version \
-    "${INSTALL_ROOT}/lib/${arch}-${os}/libdbus-1.so.3"
-  cp "${SCRIPT_DIR}/libdbus-1-3-symbols" \
-    "${INSTALL_ROOT}/debian/libdbus-1-3/DEBIAN/symbols"
+  # TODO(nornagon): the following lines are commented out because they require
+  # arm-linux-gnueabihf-strip, which isn't present on the CI machines.
+  # ${strip} -R .gnu.version_d -R .gnu.version \
+  #   "${INSTALL_ROOT}/lib/${arch}-${os}/libdbus-1.so.3"
+  # cp "${SCRIPT_DIR}/libdbus-1-3-symbols" \
+  #   "${INSTALL_ROOT}/debian/libdbus-1-3/DEBIAN/symbols"
 
   # Glibc 2.27 introduced some new optimizations to several math functions, but
   # it will be a while before it makes it into all supported distros.  Luckily,
