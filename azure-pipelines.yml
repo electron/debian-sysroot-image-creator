@@ -1,0 +1,21 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: [ sid ]
+pr: [ sid ]
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- script: pip install s3cmd
+  displayName: 'Install s3cmd'
+- script: ./build/linux/sysroot_scripts/build_and_upload.py
+  displayName: 'Build & upload sysroot images'
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'sysroots.json'
+    targetPath: 'build/linux/sysroot_scripts/sysroots.json'
