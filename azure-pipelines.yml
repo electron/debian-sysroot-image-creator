@@ -1,0 +1,23 @@
+trigger: [ sid ]
+pr: [ sid ]
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- script: sudo apt-get install s3cmd
+  displayName: 'Install s3cmd'
+- script: sudo add-apt-repository -yu ppa:jonathonf/binutils-2.29 && sudo apt-get install binutils
+  displayName: 'Install binutils 2.29'
+
+- script: ./build/linux/sysroot_scripts/build_and_upload.py
+  displayName: 'Build & upload sysroot images'
+  env:
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    ELECTRON_S3_BUCKET: gh-contractor-zcbenz
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'sysroots.json'
+    targetPath: 'build/linux/sysroot_scripts'
