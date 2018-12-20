@@ -19,8 +19,13 @@ import sys
 
 
 def run_script(args):
-  fnull = open(os.devnull, 'w')
-  subprocess.check_call(args, stdout=fnull, stderr=fnull)
+  #fnull = open(os.devnull, 'w')
+  try:
+    subprocess.check_output(args, stderr=subprocess.STDOUT)
+  except subprocess.CalledProcessError as e:
+    print("{} failed:".format(repr(args)))
+    print(e.output)
+    raise e
 
 
 def sha1sumfile(filename):
