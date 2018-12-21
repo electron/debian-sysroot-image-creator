@@ -106,7 +106,13 @@ DownloadOrCopy() {
     # instances of sysroot-creator.sh from trying to write to the same file.
     # --create-dirs is added in case there are slashes in the filename, as can
     # happen with the "debian/security" release class.
-    curl -L "$1" --create-dirs -o "${2}.partial.$$"
+    for try in {2..6}; do
+      curl -L "$1" --create-dirs -o "${2}.partial.$$" && break
+      if [ $try -le 5 ]; then
+        echo "Retrying in $(($try * $try)) seconds ($try/5)..."
+        sleep $(($try * $try))
+      fi
+    done
     mv "${2}.partial.$$" $2
   else
     SubBanner "copying from $1"
