@@ -109,9 +109,11 @@ DownloadOrCopy() {
     for try in {2..6}; do
       curl -L "$1" --create-dirs -o "${2}.partial.$$" && break
       if [ $try -le 5 ]; then
-        echo "Retrying in $(($try * $try)) seconds ($try/5)..."
-        sleep $(($try * $try))
+        echo "Retrying in $((4 * 2 ** $try)) seconds ($try/5)..."
+        sleep $((4 * 2 ** $try))
+        continue
       fi
+      false
     done
     mv "${2}.partial.$$" $2
   else
