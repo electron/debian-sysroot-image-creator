@@ -15,7 +15,7 @@ DIST=sid
 # may be useful for certain kinds of development, the standard sysroots should
 # continue to be shipped only with released packages.
 ARCHIVE_URL="https://snapshot.debian.org/archive/debian"
-ARCHIVE_TIMESTAMP=20181214T150526Z
+ARCHIVE_TIMESTAMP=20181009T152625Z
 APT_SOURCES_LIST="${ARCHIVE_URL}/${ARCHIVE_TIMESTAMP}/ experimental main
 ${ARCHIVE_URL}/${ARCHIVE_TIMESTAMP}/ sid main"
 
