@@ -8,7 +8,10 @@ jobs:
     steps:
       - checkout
       - run: sudo pip install s3cmd
-      - run: ./build/linux/sysroot_scripts/build_and_upload.py
+      - run:
+          name: Build & upload sysroots
+          command: ./build/linux/sysroot_scripts/build_and_upload.py
+          no_output_timeout: 30m
       - store_artifacts:
           path: build/linux/sysroot_scripts/sysroots.json
           destination: sysroots.json
