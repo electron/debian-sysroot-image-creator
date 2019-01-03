@@ -10,6 +10,9 @@ steps:
 - script: sudo add-apt-repository -yu ppa:jonathonf/binutils-2.29 && sudo apt-get install binutils
   displayName: 'Install binutils 2.29'
 
+- script: ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootAll
+  displayName: 'Download debian packages'
+
 - script: ./build/linux/sysroot_scripts/build_and_upload.py
   displayName: 'Build & upload sysroot images'
   env:

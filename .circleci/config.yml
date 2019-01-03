@@ -9,6 +9,9 @@ jobs:
       - checkout
       - run: sudo pip install s3cmd
       - run:
+          name: Download debian packages
+          command: ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootAll
+      - run:
           name: Build & upload sysroots
           command: ./build/linux/sysroot_scripts/build_and_upload.py
           no_output_timeout: 30m
