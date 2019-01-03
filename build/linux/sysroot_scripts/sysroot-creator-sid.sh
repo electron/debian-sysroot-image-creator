@@ -364,14 +364,6 @@ DEBIAN_PACKAGES+="
   libnotify-dev
 "
 
-# These are packages that are required by Chromium, but not as at the versions
-# that Chromium last updated their sysroots.
-DEBIAN_PACKAGES+="
-  libicu63
-  libzstd1
-  libzstd-dev
-"
-
 DEBIAN_PACKAGES_AMD64="
   liblsan0
   libtsan0
