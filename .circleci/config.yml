@@ -8,7 +8,14 @@ jobs:
     steps:
       - checkout
       - run: sudo pip install s3cmd
+      - restore_cache:
+          keys:
+            - deps-v1-
       - run: ./build/linux/sysroot_scripts/build_and_upload.py
+      - save_cache:
+          key: deps-v1-{{ .Revision }}
+          paths:
+            - out/sysroot-build/sid/debian-packages
       - store_artifacts:
           path: build/linux/sysroot_scripts/sysroots.json
           destination: sysroots.json
