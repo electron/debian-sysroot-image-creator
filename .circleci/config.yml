@@ -11,7 +11,10 @@ steps-build: &steps-build
     - restore_cache:
         keys:
           - deps-v2-
-    - run: ./build/linux/sysroot_scripts/build_and_upload.py
+    - run:
+        name: Build and Upload
+        command: ./build/linux/sysroot_scripts/build_and_upload.py
+        no_output_timeout: 60m
     - save_cache:
         key: deps-v2-{{ .Revision }}
         paths:
