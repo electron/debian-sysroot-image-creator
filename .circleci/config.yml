@@ -7,6 +7,7 @@ steps-build: &steps-build
   steps:
     - checkout
     - run: sudo pip install s3cmd
+    - run: sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
     - restore_cache:
         keys:
           - deps-v2-
