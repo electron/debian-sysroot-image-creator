@@ -82,13 +82,12 @@ def main():
     release = get_proc_output([script_path, 'PrintRelease'])
     architectures = get_proc_output([script_path, 'PrintArchitectures'])
     for arch in architectures.split('\n'):
-      if arch != os.environ["ElectronSingleArch"]:
-        continue
       proc = multiprocessing.Process(
           target=build_and_upload,
           args=(script_path, distro, release, arch, lock))
       procs.append(("%s %s (%s)" % (distro, release, arch), proc))
       proc.start()
+      proc.join()
   for _, proc in procs:
     proc.join()
 

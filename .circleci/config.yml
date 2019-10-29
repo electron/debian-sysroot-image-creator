@@ -9,10 +9,10 @@ steps-build: &steps-build
     - run: sudo pip install s3cmd
     - restore_cache:
         keys:
-          - deps-v1-{{ .Environment.ElectronSingleArch }}
+          - deps-v2-
     - run: ./build/linux/sysroot_scripts/build_and_upload.py
     - save_cache:
-        key: deps-v1-{{ .Environment.ElectronSingleArch }}-{{ .Revision }}
+        key: deps-v2-{{ .Revision }}
         paths:
           - out/sysroot-build/sid/debian-packages
     - store_artifacts:
@@ -20,44 +20,11 @@ steps-build: &steps-build
         destination: sysroots.json
 
 jobs:
-  build-amd64:
-    environment:
-      ElectronSingleArch: Amd64
+  build:
     <<: *steps-build
-  build-i386:
-    environment:
-      ElectronSingleArch: I386
-    <<: *steps-build
-  build-arm:
-    environment:
-      ElectronSingleArch: ARM
-    <<: *steps-build
-  build-arm64:
-    environment:
-      ElectronSingleArch: ARM64
-    <<: *steps-build
-  build-armel:
-    environment:
-      ElectronSingleArch: ARMEL
-    <<: *steps-build
-  build-mips:
-    environment:
-      ElectronSingleArch: Mips
-    <<: *steps-build
-  build-mips64el:
-    environment:
-      ElectronSingleArch: Mips64el
-    <<: *steps-build
-
 
 workflows:
   version: 2
   build-and-upload:
     jobs:
-      - build-amd64
-      - build-i386
-      - build-arm
-      - build-arm64
-      - build-armel
-      - build-mips
-      - build-mips64el
+      - build
