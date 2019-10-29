@@ -371,6 +371,8 @@ DEBIAN_PACKAGES="\
 
 # Electron-specific dependencies
 DEBIAN_PACKAGES+="
+  libhogweed5
+  libnettle7
   libnotify4
   libnotify-dev
 "
