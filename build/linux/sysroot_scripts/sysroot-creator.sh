@@ -701,8 +701,8 @@ BuildSysrootAll() {
 UploadSysroot() {
   local sha=$(sha1sum "${TARBALL}" | awk '{print $1;}')
   set -x
-  gsutil.py cp -a public-read "${TARBALL}" \
-      "gs://chrome-linux-sysroot/toolchain/$sha/"
+  s3cmd put --acl-public "${TARBALL}" \
+      "s3://${ELECTRON_S3_BUCKET}/toolchain/$sha/"
   set +x
 }
 
