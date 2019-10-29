@@ -2,7 +2,7 @@ version: 2
 
 steps-build: &steps-build
   docker:
-    - image: circleci/python:2.7-stretch
+    - image: circleci/python:2.7-buster
   resource_class: 2xlarge
   steps:
     - checkout
