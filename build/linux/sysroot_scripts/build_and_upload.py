@@ -44,7 +44,8 @@ def build_and_upload(script_path, distro, release, arch, lock):
   script_dir = os.path.dirname(os.path.realpath(__file__))
 
   run_script([script_path, 'BuildSysroot' + arch])
-  run_script([script_path, 'UploadSysroot' + arch])
+  if "AWS_SECRET_ACCESS_KEY" in os.environ:
+    run_script([script_path, 'UploadSysroot' + arch])
 
   tarball = '%s_%s_%s_sysroot.tar.xz' % (distro, release, arch.lower())
   tarxz_path = os.path.join(script_dir, "..", "..", "..", "out",
@@ -81,12 +82,13 @@ def main():
     release = get_proc_output([script_path, 'PrintRelease'])
     architectures = get_proc_output([script_path, 'PrintArchitectures'])
     for arch in architectures.split('\n'):
+      if arch != os.environ["ElectronSingleArch"]:
+        continue
       proc = multiprocessing.Process(
           target=build_and_upload,
           args=(script_path, distro, release, arch, lock))
       procs.append(("%s %s (%s)" % (distro, release, arch), proc))
       proc.start()
-      break
   for _, proc in procs:
     proc.join()
 
