@@ -86,6 +86,7 @@ def main():
           args=(script_path, distro, release, arch, lock))
       procs.append(("%s %s (%s)" % (distro, release, arch), proc))
       proc.start()
+      break
   for _, proc in procs:
     proc.join()
 
