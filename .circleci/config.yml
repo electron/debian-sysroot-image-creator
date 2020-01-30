@@ -14,7 +14,7 @@ steps-build: &steps-build
     - run:
         name: Fix the freetype stuff, idek
         command:  |
-          if [[ -d out/sysroot-build/sid/debian-packages]]; then
+          if [ -d out/sysroot-build/sid/debian-packages]; then
             rm out/sysroot-build/sid/debian-packages/libfreetype6*
           fi
     - run:
