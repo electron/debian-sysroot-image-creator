@@ -14,9 +14,9 @@ steps-build: &steps-build
     - run:
         name: Fix the freetype stuff, idek
         command:  |
-          set +e
-          set +o pipefail
-          rm out/sysroot-build/sid/debian-packages/libfreetype6*
+          if [[ -d out/sysroot-build/sid/debian-packages]]; then
+            rm out/sysroot-build/sid/debian-packages/libfreetype6*
+          fi
     - run:
         name: Build and Upload
         command: ./build/linux/sysroot_scripts/build_and_upload.py
