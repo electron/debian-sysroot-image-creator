@@ -13,6 +13,7 @@ steps-build: &steps-build
           - deps-v2-
     - run:
         name: Fix the freetype stuff, idek
+        shell: /bin/sh
         command: rm out/sysroot-build/sid/debian-packages/libfreetype6*
     - run:
         name: Build and Upload
