@@ -18,6 +18,30 @@ steps-build: &steps-build
             rm out/sysroot-build/sid/debian-packages/libfreetype6*
           fi
     - run:
+        name: Build each sysroot BuildSysrootARM64 separately to find issue
+        command: |
+          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootARM64
+    - run:
+        name: Build each sysroot BuildSysrootMips64el separately to find issue
+        command: |
+          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootMips64el
+    - run:
+        name: Build each sysroot BuildSysrootMips separately to find issue
+        command: |
+          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootMips
+    - run:
+        name: Build each sysroot BuildSysrootARMEL separately to find issue
+        command: |
+          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootARMEL
+    - run:
+        name: Build each sysroot BuildSysrootARM separately to find issue
+        command: |
+          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootARM
+    - run:
+        name: Build each sysroot BuildSysrootAmd64 separately to find issue
+        command: |
+          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootAmd64          
+    - run:
         name: Build and Upload
         command: ./build/linux/sysroot_scripts/build_and_upload.py
         no_output_timeout: 60m
