@@ -43,7 +43,8 @@ def get_proc_output(args):
 def build_and_upload(script_path, distro, release, arch, lock):
   script_dir = os.path.dirname(os.path.realpath(__file__))
 
-  run_script([script_path, 'BuildSysroot' + arch])
+  if "SKIP_SYSROOT_BUILD" not in os.environ:
+    run_script([script_path, 'BuildSysroot' + arch])
   if "AWS_SECRET_ACCESS_KEY" in os.environ:
     run_script([script_path, 'UploadSysroot' + arch])
 

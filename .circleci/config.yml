@@ -1,64 +1,89 @@
-version: 2
+version: 2.1
 
-steps-build: &steps-build
-  docker:
-    - image: circleci/python:2.7-buster
-  resource_class: 2xlarge
-  steps:
-    - checkout
-    - run: sudo pip install s3cmd
-    - run: sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
-    - restore_cache:
-        keys:
-          - deps-v2-
-    - run:
-        name: Fix the freetype stuff, idek
-        command:  |
-          if [ -d out/sysroot-build/sid/debian-packages]; then
-            rm out/sysroot-build/sid/debian-packages/libfreetype6*
-          fi
-    - run:
-        name: Build each sysroot BuildSysrootARM64 separately to find issue
-        command: |
-          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootARM64
-    - run:
-        name: Build each sysroot BuildSysrootMips64el separately to find issue
-        command: |
-          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootMips64el
-    - run:
-        name: Build each sysroot BuildSysrootMips separately to find issue
-        command: |
-          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootMips
-    - run:
-        name: Build each sysroot BuildSysrootARMEL separately to find issue
-        command: |
-          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootARMEL
-    - run:
-        name: Build each sysroot BuildSysrootARM separately to find issue
-        command: |
-          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootARM
-    - run:
-        name: Build each sysroot BuildSysrootAmd64 separately to find issue
-        command: |
-          ./build/linux/sysroot_scripts/sysroot-creator-sid.sh BuildSysrootAmd64          
-    - run:
-        name: Build and Upload
-        command: ./build/linux/sysroot_scripts/build_and_upload.py
-        no_output_timeout: 60m
-    - save_cache:
-        key: deps-v2-{{ .Revision }}
-        paths:
-          - out/sysroot-build/sid/debian-packages
-    - store_artifacts:
-        path: build/linux/sysroot_scripts/sysroots.json
-        destination: sysroots.json
+commands:
+  prepare:
+    steps:
+      - checkout
+      - run: sudo pip install s3cmd
+      - run: sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
+      - run:
+          name: Fix the freetype stuff, idek
+          command:  |
+            if [ -d out/sysroot-build/sid/debian-packages]; then
+              rm out/sysroot-build/sid/debian-packages/libfreetype6*
+            fi
+  build-image:
+    parameters:
+      image:
+        type: string
+    steps:
+      - prepare
+      - run:
+          name: Build sysroot
+          command: |
+            ./build/linux/sysroot_scripts/sysroot-creator-sid.sh << parameters.image >>
+      - persist_to_workspace:
+          root: .
+          paths:
+            - out/sysroot-build/sid/*.tar.xz
 
 jobs:
   build:
-    <<: *steps-build
+    parameters:
+      image:
+        type: string
+    docker:
+      - image: circleci/python:2.7-buster
+    resource_class: 2xlarge
+    steps:
+      - build-image:
+          image: << parameters.image >>
+  upload-images:
+    docker:
+      - image: circleci/python:2.7-buster
+    resource_class: large
+    steps:
+      - prepare
+      - attach_workspace:
+          at: .
+      - run:
+          name: Upload Sysroots
+          command: SKIP_SYSROOT_BUILD=true ./build/linux/sysroot_scripts/build_and_upload.py
+      - store_artifacts:
+          path: build/linux/sysroot_scripts/sysroots.json
+          destination: sysroots.json
 
 workflows:
-  version: 2
+  version: 2.1
   build-and-upload:
     jobs:
-      - build
+      - build:
+          image: BuildSysrootARM64
+          name: build-image-arm64
+      - build:
+          image: BuildSysrootMips64el
+          name: build-image-mips64
+      - build:
+          image: BuildSysrootMips
+          name: build-image-mips
+      - build:
+          image: BuildSysrootARMEL
+          name: build-image-armel
+      - build:
+          image: BuildSysrootARM
+          name: build-image-arm
+      - build:
+          image: BuildSysrootAmd64
+          name: build-image-x64
+      - build:
+          image: BuildSysrootI386
+          name: build-image-i386
+      - upload-images:
+          requires:
+            - build-image-arm64
+            - build-image-mips64
+            - build-image-mips
+            - build-image-armel
+            - build-image-arm
+            - build-image-x64
+            - build-image-i386
