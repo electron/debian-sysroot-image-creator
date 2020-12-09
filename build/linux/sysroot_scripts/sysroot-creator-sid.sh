@@ -345,6 +345,7 @@ DEBIAN_PACKAGES="\
   libxrandr2
   libxrender-dev
   libxrender1
+  libxshmfence-dev
   libxshmfence1
   libxslt1-dev
   libxslt1.1
