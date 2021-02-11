@@ -268,7 +268,6 @@ DEBIAN_PACKAGES="\
   libsoup-gnome2.4-1
   libsoup2.4-1
   libspa-0.2-dev
-  libspa-lib-0.1-dev
   libspeechd-dev
   libspeechd2
   libsqlite3-0
