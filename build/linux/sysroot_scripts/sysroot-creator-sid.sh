@@ -47,6 +47,7 @@ DEBIAN_PACKAGES="\
   libappindicator3-dev
   libasound2
   libasound2-dev
+  libaspell15
   libasyncns0
   libatk-bridge2.0-0
   libatk-bridge2.0-dev
@@ -66,6 +67,7 @@ DEBIAN_PACKAGES="\
   libbrotli-dev
   libbrotli1
   libbsd0
+  libbz2-1.0
   libc6
   libc6-dev
   libcairo-gobject2
@@ -99,6 +101,8 @@ DEBIAN_PACKAGES="\
   libdrm-nouveau2
   libdrm-radeon1
   libdrm2
+  libdw1
+  libenchant-2-2
   libegl-dev
   libegl1
   libegl1-mesa
@@ -162,6 +166,10 @@ DEBIAN_PACKAGES="\
   libgraphite2-dev
   libgssapi-krb5-2
   libgssrpc4
+  libgstreamer1.0-0
+  libgstreamer-gl1.0-0
+  libgstreamer-plugins-base1.0-0
+  libgstreamer-plugins-bad1.0-0
   libgtk-3-0
   libgtk-3-dev
   libgtk-4-0
@@ -173,6 +181,8 @@ DEBIAN_PACKAGES="\
   libharfbuzz-icu0
   libharfbuzz0b
   libhogweed6
+  libhunspell-1.7-0
+  libhyphen0
   libice6
   libicu-le-hb0
   libicu67
@@ -183,6 +193,8 @@ DEBIAN_PACKAGES="\
   libindicator7
   libinput-dev
   libinput10
+  libjavascriptcoregtk-4.0-18
+  libjavascriptcoregtk-4.0-dev
   libjbig0
   libjpeg62-turbo
   libjpeg62-turbo-dev
@@ -222,8 +234,10 @@ DEBIAN_PACKAGES="\
   libogg-dev
   libogg0
   libopengl0
+  libopenjp2-7
   libopus-dev
   libopus0
+  liborc-0.4-0
   libp11-kit0
   libpam0g
   libpam0g-dev
@@ -263,6 +277,8 @@ DEBIAN_PACKAGES="\
   librest-0.7-0
   librtmp1
   libsasl2-2
+  libseccomp2
+  libsecret-1-0
   libselinux1
   libselinux1-dev
   libsepol1
@@ -293,6 +309,7 @@ DEBIAN_PACKAGES="\
   libudev1
   libunbound8
   libunistring2
+  libunwind8
   libuuid1
   libva-dev
   libva-drm2
@@ -316,6 +333,11 @@ DEBIAN_PACKAGES="\
   libwebp6
   libwebpdemux2
   libwebpmux3
+  libwebkit2gtk-4.0-37
+  libwebkit2gtk-4.0-dev
+  libwoff1
+  libwpe-1.0-1
+  libwpebackend-fdo-1.0-1
   libwrap0
   libx11-6
   libx11-dev
