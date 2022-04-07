@@ -1,31 +1,34 @@
 #!/bin/bash
-# Copyright 2017 The Chromium Authors. All rights reserved.
+# Copyright 2022 The Chromium Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 DISTRO=debian
-DIST=sid
+DIST=bullseye
 
-# Keep the "experimental" repo before the "sid" repo.  There are some packages
-# that are currently only available in experimental like libgtk-4-0, but if it
-# were to be placed first, experimental (unreleased) versions of other packages
-# like libc6 would take precedence over the sid (released) versions.  While this
-# may be useful for certain kinds of development, the standard sysroots should
-# continue to be shipped only with released packages.
-# Also keep "stretch" before "sid".  For now, it's needed to bring back
-# libgnome-keyring-dev which has since been deprecated and removed from sid.
-# It will be needed until gnome keyring is removed (http://crbug.com/466975 and
-# http://crbug.com/355223).
-ARCHIVE_URL="https://snapshot.debian.org/archive/debian"
-ARCHIVE_TIMESTAMP=20210115T203459Z
-APT_SOURCES_LIST="${ARCHIVE_URL}/${ARCHIVE_TIMESTAMP}/ stretch main
-${ARCHIVE_URL}/${ARCHIVE_TIMESTAMP}/ experimental main
-${ARCHIVE_URL}/${ARCHIVE_TIMESTAMP}/ sid main"
+ARCHIVE_TIMESTAMP=20220331T153654Z
+ARCHIVE_URL="https://snapshot.debian.org/archive/debian/$ARCHIVE_TIMESTAMP/"
+APT_SOURCES_LIST=(
+  # Debian 12 (Bookworm) is needed for GTK4.  It should be kept before bullseye
+  # so that bullseye takes precedence.
+  "${ARCHIVE_URL} bookworm main"
+  "${ARCHIVE_URL} bookworm-updates main"
 
-# gpg keyring file generated using generate_debian_archive_unstable.sh
-KEYRING_FILE="${SCRIPT_DIR}/debian_archive_unstable.gpg"
+  # Debian 9 (Stretch) is needed for gnome-keyring.  It should be kept before
+  # bullseye so that bullseye takes precedence.
+  "${ARCHIVE_URL} stretch main"
+  "${ARCHIVE_URL} stretch-updates main"
+
+  # This mimicks a sources.list from bullseye.
+  "${ARCHIVE_URL} bullseye main contrib non-free"
+  "${ARCHIVE_URL} bullseye-updates main contrib non-free"
+  "${ARCHIVE_URL} bullseye-backports main contrib non-free"
+)
+
+# gpg keyring file generated using generate_keyring.sh
+KEYRING_FILE="${SCRIPT_DIR}/keyring.gpg"
 
 HAS_ARCH_AMD64=1
 HAS_ARCH_I386=1
@@ -36,15 +39,9 @@ HAS_ARCH_MIPS=1
 HAS_ARCH_MIPS64EL=1
 
 # Sysroot packages: these are the packages needed to build chrome.
-# NOTE: When DEBIAN_PACKAGES is modified, the packagelist files must be updated
-# by running this script in GeneratePackageList mode.
 DEBIAN_PACKAGES="\
   comerr-dev
   krb5-multidev
-  libappindicator-dev
-  libappindicator1
-  libappindicator3-1
-  libappindicator3-dev
   libasound2
   libasound2-dev
   libasyncns0
@@ -75,15 +72,16 @@ DEBIAN_PACKAGES="\
   libcap-dev
   libcap-ng0
   libcap2
+  libcloudproviders0
   libcolord2
   libcom-err2
   libcups2
   libcups2-dev
   libcupsimage2
   libcupsimage2-dev
-  libdatrie-dev
   libcurl3-gnutls
   libcurl4-gnutls-dev
+  libdatrie-dev
   libdatrie1
   libdb5.3
   libdbus-1-3
@@ -93,6 +91,7 @@ DEBIAN_PACKAGES="\
   libdbusmenu-glib4
   libdbusmenu-gtk3-4
   libdbusmenu-gtk4
+  libdeflate-dev
   libdeflate0
   libdrm-amdgpu1
   libdrm-dev
@@ -113,7 +112,6 @@ DEBIAN_PACKAGES="\
   libexpat1
   libexpat1-dev
   libffi-dev
-  libffi6
   libffi7
   libflac-dev
   libflac8
@@ -126,7 +124,7 @@ DEBIAN_PACKAGES="\
   libgbm-dev
   libgbm1
   libgcc-10-dev
-  libgcc1
+  libgcc-s1
   libgcrypt20
   libgcrypt20-dev
   libgdk-pixbuf-2.0-0
@@ -164,7 +162,7 @@ DEBIAN_PACKAGES="\
   libgssrpc4
   libgtk-3-0
   libgtk-3-dev
-  libgtk-4-0
+  libgtk-4-1
   libgtk-4-dev
   libgtk2.0-0
   libgudev-1.0-0
@@ -179,10 +177,9 @@ DEBIAN_PACKAGES="\
   libidl-2-0
   libidn11
   libidn2-0
-  libindicator3-7
-  libindicator7
   libinput-dev
   libinput10
+  libjbig-dev
   libjbig0
   libjpeg62-turbo
   libjpeg62-turbo-dev
@@ -203,6 +200,7 @@ DEBIAN_PACKAGES="\
   liblz4-1
   liblzma5
   liblzo2-2
+  libmd0
   libminizip-dev
   libminizip1
   libmount-dev
@@ -241,7 +239,6 @@ DEBIAN_PACKAGES="\
   libpcre2-32-0
   libpcre2-8-0
   libpcre2-dev
-  libpcre2-posix0
   libpcre2-posix2
   libpcre3
   libpcre3-dev
@@ -286,13 +283,17 @@ DEBIAN_PACKAGES="\
   libtasn1-6
   libthai-dev
   libthai0
+  libtiff-dev
   libtiff5
+  libtiffxx5
   libtinfo6
   libtirpc3
   libudev-dev
   libudev1
   libunbound8
   libunistring2
+  libutempter-dev
+  libutempter0
   libuuid1
   libva-dev
   libva-drm2
@@ -302,8 +303,7 @@ DEBIAN_PACKAGES="\
   libva2
   libvorbis0a
   libvorbisenc2
-  libvpx-dev
-  libvpx6
+  libvulkan-dev
   libvulkan1
   libwacom2
   libwayland-client0
@@ -381,50 +381,25 @@ DEBIAN_PACKAGES="\
   linux-libc-dev
   mesa-common-dev
   shared-mime-info
-  speech-dispatcher
   uuid-dev
   wayland-protocols
-  x11proto-composite-dev
-  x11proto-damage-dev
   x11proto-dev
-  x11proto-fixes-dev
-  x11proto-input-dev
-  x11proto-kb-dev
-  x11proto-randr-dev
-  x11proto-record-dev
-  x11proto-render-dev
-  x11proto-scrnsaver-dev
-  x11proto-xext-dev
-  x11proto-xinerama-dev
   zlib1g
   zlib1g-dev
 "
 
-# Electron-specific dependencies
-DEBIAN_PACKAGES+="
-  libnotify4
-  libnotify-dev
-"
-
-# These are packages that are required by Chromium, but not as at the versions
-# that Chromium last updated their sysroots.
-DEBIAN_PACKAGES+="
-  libzstd-dev
-"
-
 DEBIAN_PACKAGES_AMD64="
-  liblsan0
   libtsan0
+  liblsan0
 "
 
 DEBIAN_PACKAGES_X86="
   libasan6
-  libcilkrts5
   libdrm-intel1
   libitm1
-  libmpx2
   libquadmath0
   libubsan1
+  valgrind
 "
 
 DEBIAN_PACKAGES_ARM="
@@ -435,6 +410,7 @@ DEBIAN_PACKAGES_ARM="
   libdrm-omap1
   libdrm-tegra0
   libubsan1
+  valgrind
 "
 
 DEBIAN_PACKAGES_ARM64="
@@ -448,6 +424,7 @@ DEBIAN_PACKAGES_ARM64="
   libthai0
   libtsan0
   libubsan1
+  valgrind
 "
 
 DEBIAN_PACKAGES_ARMEL="
@@ -460,6 +437,7 @@ DEBIAN_PACKAGES_ARMEL="
 "
 
 DEBIAN_PACKAGES_MIPS64EL="
+  valgrind
 "
 
 . "${SCRIPT_DIR}/sysroot-creator.sh"

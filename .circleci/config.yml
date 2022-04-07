@@ -4,13 +4,15 @@ commands:
   prepare:
     steps:
       - checkout
-      - run: sudo pip install s3cmd
-      - run: sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
+      - run: pip install s3cmd
+      - run: |
+          sudo apt-get update
+          sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
       - run:
           name: Fix the freetype stuff, idek
           command:  |
-            if [ -d out/sysroot-build/sid/debian-packages]; then
-              rm out/sysroot-build/sid/debian-packages/libfreetype6*
+            if [ -d out/sysroot-build/bullseye/debian-packages]; then
+              rm out/sysroot-build/bullseye/debian-packages/libfreetype6*
             fi
   build-image:
     parameters:
@@ -21,11 +23,11 @@ commands:
       - run:
           name: Build sysroot
           command: |
-            ./build/linux/sysroot_scripts/sysroot-creator-sid.sh << parameters.image >>
+            ./build/linux/sysroot_scripts/sysroot-creator-bullseye.sh << parameters.image >>
       - persist_to_workspace:
           root: .
           paths:
-            - out/sysroot-build/sid/*.tar.xz
+            - out/sysroot-build/bullseye/*.tar.xz
 
 jobs:
   build:
@@ -33,14 +35,14 @@ jobs:
       image:
         type: string
     docker:
-      - image: circleci/python:2.7-buster
+      - image: cimg/python:3.10.4
     resource_class: 2xlarge
     steps:
       - build-image:
           image: << parameters.image >>
   upload-images:
     docker:
-      - image: circleci/python:2.7-buster
+      - image: cimg/python:3.10.4
     resource_class: large
     steps:
       - prepare

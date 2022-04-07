@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (c) 2013 The Chromium Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -18,6 +18,10 @@
 # time chrome's build dependencies are changed but should also be updated
 # periodically to include upstream security fixes from Debian.
 
+# This script looks at sysroots.json next to it to find the name of a .tar.xz
+# to download and the location to extract it to. The extracted sysroot could for
+# example be in build/linux/debian_bullseye_amd64-sysroot/.
+
 from __future__ import print_function
 
 import hashlib
@@ -30,13 +34,15 @@ import shutil
 import subprocess
 import sys
 try:
-    # For Python 3.0 and later
-    from urllib.request import urlopen
+  # For Python 3.0 and later
+  from urllib.request import urlopen
 except ImportError:
-    # Fall back to Python 2's urllib2
-    from urllib2 import urlopen
+  # Fall back to Python 2's urllib2
+  from urllib2 import urlopen
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+SRC_DIR = os.path.dirname(os.path.dirname(os.path.dirname(SCRIPT_DIR)))
+SYSTOORS_CONFIG_DIR = os.path.join(SRC_DIR, 'electron', 'script')
 
 URL_PREFIX = 'https://s3.amazonaws.com'
 URL_PATH = 'electronjs-sysroots/toolchain'
@@ -50,7 +56,8 @@ ARCH_TRANSLATIONS = {
     'mips64': 'mips64el',
 }
 
-DEFAULT_TARGET_PLATFORM = 'sid'
+DEFAULT_TARGET_PLATFORM = 'bullseye'
+
 
 class Error(Exception):
   pass
@@ -78,8 +85,6 @@ def main(args):
   parser.add_option('--print-hash',
                     help='Print the hash of the sysroot for the given arch.')
   options, _ = parser.parse_args(args)
-  if not sys.platform.startswith('linux'):
-    return 0
 
   if options.print_hash:
     arch = options.print_hash
@@ -103,7 +108,7 @@ def GetSysrootDict(target_platform, target_arch):
   if target_arch not in VALID_ARCHS:
     raise Error('Unknown architecture: %s' % target_arch)
 
-  sysroots_file = os.path.join(SCRIPT_DIR, 'sysroots.json')
+  sysroots_file = os.path.join(SYSTOORS_CONFIG_DIR, 'sysroots.json')
   sysroots = json.load(open(sysroots_file))
   sysroot_key = '%s_%s' % (target_platform, target_arch)
   if sysroot_key not in sysroots:

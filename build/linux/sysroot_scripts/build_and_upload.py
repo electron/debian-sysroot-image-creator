@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright 2016 The Chromium Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -37,7 +37,7 @@ def sha1sumfile(filename):
 
 
 def get_proc_output(args):
-  return subprocess.check_output(args).strip()
+  return subprocess.check_output(args, encoding='utf-8').strip()
 
 
 def build_and_upload(script_path, distro, release, arch, lock):
@@ -60,11 +60,10 @@ def build_and_upload(script_path, distro, release, arch, lock):
       'SysrootDir': sysroot_dir,
   }
   with lock:
-    with open(os.path.join(script_dir, 'sysroots.json'), 'rw+') as f:
-      sysroots = json.load(f)
+    fname = os.path.join(script_dir, 'sysroots.json')
+    sysroots = json.load(open(fname))
+    with open(fname, 'w') as f:
       sysroots["%s_%s" % (release, arch.lower())] = sysroot_metadata
-      f.seek(0)
-      f.truncate()
       f.write(
           json.dumps(
               sysroots, sort_keys=True, indent=4, separators=(',', ': ')))
@@ -73,8 +72,6 @@ def build_and_upload(script_path, distro, release, arch, lock):
 
 def main():
   script_dir = os.path.dirname(os.path.realpath(__file__))
-  #subprocess.check_call(
-  #    [os.path.join(script_dir, 'update-archive-timestamp.sh')])
   procs = []
   lock = multiprocessing.Lock()
   for filename in glob.glob(os.path.join(script_dir, 'sysroot-creator-*.sh')):
