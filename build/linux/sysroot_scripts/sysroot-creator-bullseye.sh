@@ -388,6 +388,12 @@ DEBIAN_PACKAGES="\
   zlib1g-dev
 "
 
+# Electron-specific dependencies
+DEBIAN_PACKAGES+="
+  libnotify4
+  libnotify-dev
+"
+
 DEBIAN_PACKAGES_AMD64="
   libtsan0
   liblsan0
