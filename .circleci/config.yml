@@ -1,11 +1,13 @@
 version: 2.1
 
+orbs:
+  azure-cli: circleci/azure-cli@1.2.2
+
 commands:
   prepare:
     steps:
       - checkout
-      - run: sudo pip install s3cmd
-      - run: sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
+      - run: sudo apt update && sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
       - run:
           name: Fix the freetype stuff, idek
           command:  |
@@ -40,15 +42,17 @@ jobs:
           image: << parameters.image >>
   upload-images:
     docker:
-      - image: circleci/python:2.7-buster
+      - image: cimg/base:2022.04
     resource_class: large
     steps:
       - prepare
+      - azure-cli/install
+      - run: sudo apt install python2
       - attach_workspace:
           at: .
       - run:
           name: Upload Sysroots
-          command: SKIP_SYSROOT_BUILD=true ./build/linux/sysroot_scripts/build_and_upload.py
+          command: SKIP_SYSROOT_BUILD=true python2 ./build/linux/sysroot_scripts/build_and_upload.py
       - store_artifacts:
           path: build/linux/sysroot_scripts/sysroots.json
           destination: sysroots.json
