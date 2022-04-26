@@ -45,7 +45,7 @@ def build_and_upload(script_path, distro, release, arch, lock):
 
   if "SKIP_SYSROOT_BUILD" not in os.environ:
     run_script([script_path, 'BuildSysroot' + arch])
-  if "AWS_SECRET_ACCESS_KEY" in os.environ:
+  if "AZURE_STORAGE_SAS_TOKEN" in os.environ:
     run_script([script_path, 'UploadSysroot' + arch])
 
   tarball = '%s_%s_%s_sysroot.tar.xz' % (distro, release, arch.lower())
