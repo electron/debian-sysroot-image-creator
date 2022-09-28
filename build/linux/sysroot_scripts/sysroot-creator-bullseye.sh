@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2022 The Chromium Authors. All rights reserved.
+# Copyright 2022 The Chromium Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -75,6 +75,8 @@ DEBIAN_PACKAGES="\
   libcloudproviders0
   libcolord2
   libcom-err2
+  libcrypt-dev
+  libcrypt1
   libcups2
   libcups2-dev
   libcupsimage2
@@ -93,6 +95,7 @@ DEBIAN_PACKAGES="\
   libdbusmenu-gtk4
   libdeflate-dev
   libdeflate0
+  libdouble-conversion3
   libdrm-amdgpu1
   libdrm-dev
   libdrm-nouveau2
@@ -201,6 +204,7 @@ DEBIAN_PACKAGES="\
   liblzma5
   liblzo2-2
   libmd0
+  libmd4c0
   libminizip-dev
   libminizip1
   libmount-dev
@@ -255,6 +259,16 @@ DEBIAN_PACKAGES="\
   libpulse-dev
   libpulse-mainloop-glib0
   libpulse0
+  libqt5concurrent5
+  libqt5core5a
+  libqt5dbus5
+  libqt5gui5
+  libqt5network5
+  libqt5printsupport5
+  libqt5sql5
+  libqt5test5
+  libqt5widgets5
+  libqt5xml5
   libre2-9
   libre2-dev
   librest-0.7-0
@@ -279,6 +293,7 @@ DEBIAN_PACKAGES="\
   libssl1.1
   libstdc++-10-dev
   libstdc++6
+  libsystemd-dev
   libsystemd0
   libtasn1-6
   libthai-dev
@@ -306,9 +321,11 @@ DEBIAN_PACKAGES="\
   libvulkan-dev
   libvulkan1
   libwacom2
+  libwayland-bin
   libwayland-client0
   libwayland-cursor0
   libwayland-dev
+  libwayland-egl-backend-dev
   libwayland-egl1
   libwayland-egl1-mesa
   libwayland-server0
@@ -329,14 +346,31 @@ DEBIAN_PACKAGES="\
   libxcb-dri3-dev
   libxcb-glx0
   libxcb-glx0-dev
+  libxcb-icccm4
+  libxcb-image0
+  libxcb-image0-dev
+  libxcb-keysyms1
   libxcb-present-dev
   libxcb-present0
+  libxcb-randr0
+  libxcb-randr0-dev
+  libxcb-render-util0
+  libxcb-render-util0-dev
   libxcb-render0
   libxcb-render0-dev
+  libxcb-shape0
+  libxcb-shape0-dev
   libxcb-shm0
   libxcb-shm0-dev
+  libxcb-sync-dev
   libxcb-sync1
+  libxcb-util-dev
+  libxcb-util1
   libxcb-xfixes0
+  libxcb-xfixes0-dev
+  libxcb-xinerama0
+  libxcb-xinput0
+  libxcb-xkb1
   libxcb1
   libxcb1-dev
   libxcomposite-dev
@@ -358,6 +392,7 @@ DEBIAN_PACKAGES="\
   libxinerama-dev
   libxinerama1
   libxkbcommon-dev
+  libxkbcommon-x11-0
   libxkbcommon0
   libxml2
   libxml2-dev
@@ -380,6 +415,8 @@ DEBIAN_PACKAGES="\
   libzstd1
   linux-libc-dev
   mesa-common-dev
+  qtbase5-dev
+  qtbase5-dev-tools
   shared-mime-info
   uuid-dev
   wayland-protocols
