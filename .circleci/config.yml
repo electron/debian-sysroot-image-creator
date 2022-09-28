@@ -1,13 +1,13 @@
 version: 2.1
 
+orbs:
+  azure-cli: circleci/azure-cli@1.2.2
+
 commands:
   prepare:
     steps:
       - checkout
-      - run: pip install s3cmd
-      - run: |
-          sudo apt-get update
-          sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
+      - run: sudo apt update && sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
       - run:
           name: Fix the freetype stuff, idek
           command:  |
@@ -42,10 +42,11 @@ jobs:
           image: << parameters.image >>
   upload-images:
     docker:
-      - image: cimg/python:3.10.4
+      - image: cimg/base:2022.04
     resource_class: large
     steps:
       - prepare
+      - azure-cli/install
       - attach_workspace:
           at: .
       - run:

@@ -736,9 +736,9 @@ BuildSysrootAll() {
 
 UploadSysroot() {
   local sha=$(sha1sum "${TARBALL}" | awk '{print $1;}')
+  local tarball_name="$(basename "${TARBALL}")"
   set -x
-  s3cmd put --acl-public "${TARBALL}" \
-      "s3://${ELECTRON_S3_BUCKET}/toolchain/$sha/"
+  az storage blob upload -f "${TARBALL}" -c linux-sysroots -n $sha/"${tarball_name}"
   set +x
 }
 
