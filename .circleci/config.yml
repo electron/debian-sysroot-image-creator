@@ -47,12 +47,11 @@ jobs:
     steps:
       - prepare
       - azure-cli/install
-      - run: sudo apt install python2
       - attach_workspace:
           at: .
       - run:
           name: Upload Sysroots
-          command: SKIP_SYSROOT_BUILD=true python2 ./build/linux/sysroot_scripts/build_and_upload.py
+          command: SKIP_SYSROOT_BUILD=true ./build/linux/sysroot_scripts/build_and_upload.py
       - store_artifacts:
           path: build/linux/sysroot_scripts/sysroots.json
           destination: sysroots.json
