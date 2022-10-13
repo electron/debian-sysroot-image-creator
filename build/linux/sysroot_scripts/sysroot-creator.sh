@@ -955,11 +955,19 @@ PrintDistro() {
 }
 
 #@
-#@ DumpRelease
+#@ PrintRelease
 #@
-#@    Prints disto release.  eg: jessie
+#@    Prints disto release.  eg: bullseye
 PrintRelease() {
   echo ${DIST}
+}
+
+#@
+#@ PrintKey
+#@
+#@    Prints sysroot key identifier.
+PrintKey() {
+  echo "${ARCHIVE_TIMESTAMP}-${SYSROOT_RELEASE}"
 }
 
 RunCommand() {
