@@ -10,8 +10,10 @@ import re
 import subprocess
 import sys
 
-# This constant comes from https://crbug.com/580892
-MAX_ALLOWED_GLIBC_VERSION = [2, 17]
+# This constant comes from the oldest glibc version in
+# //chrome/installer/linux/debian/dist_package_versions.json and
+# //chrome/installer/linux/rpm/dist_package_provides.json
+MAX_ALLOWED_GLIBC_VERSION = [2, 26]
 
 VERSION_PATTERN = re.compile('GLIBC_([0-9\.]+)')
 SECTION_PATTERN = re.compile(r'^ *\[ *[0-9]+\] +(\S+) +\S+ + ([0-9a-f]+) .*$')
@@ -71,7 +73,7 @@ for line in stdout.decode("utf-8").split('\n'):
       continue
     version = [int(part) for part in match.group(1).split('.')]
 
-  if version <= MAX_ALLOWED_GLIBC_VERSION:
+  if version < MAX_ALLOWED_GLIBC_VERSION:
     old_supported_version = supported_version.get(base_name, ([-1], -1))
     supported_version[base_name] = max((version, index), old_supported_version)
   if is_default:
