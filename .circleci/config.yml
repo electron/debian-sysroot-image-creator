@@ -7,9 +7,11 @@ commands:
   prepare:
     steps:
       - checkout
-      - run: sudo apt update && sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
       - run:
-          name: Fix the freetype stuff, idek
+          name: Install Packages
+          command: sudo apt update && sudo apt install -y binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
+      - run:
+          name: Delete Unneeded Freetype Packages
           command:  |
             if [ -d out/sysroot-build/bullseye/debian-packages]; then
               rm out/sysroot-build/bullseye/debian-packages/libfreetype6*
@@ -21,9 +23,9 @@ commands:
     steps:
       - prepare
       - run:
-          name: Build sysroot
+          name: Build << parameters.image >> sysroot
           command: |
-            ./build/linux/sysroot_scripts/sysroot-creator-bullseye.sh << parameters.image >>
+            ./build/linux/sysroot_scripts/sysroot-creator.sh build << parameters.image >>
       - persist_to_workspace:
           root: .
           paths:
@@ -35,7 +37,7 @@ jobs:
       image:
         type: string
     docker:
-      - image: cimg/python:3.10.4
+      - image: cimg/python:3.11.3
     resource_class: 2xlarge
     steps:
       - build-image:
@@ -61,32 +63,32 @@ workflows:
   build-and-upload:
     jobs:
       - build:
-          image: BuildSysrootARM64
+          image: amd64
+          name: build-image-amd64
+      - build:
+          image: arm64
           name: build-image-arm64
       - build:
-          image: BuildSysrootMips64el
-          name: build-image-mips64
-      - build:
-          image: BuildSysrootMips
-          name: build-image-mips
-      - build:
-          image: BuildSysrootARMEL
+          image: armel
           name: build-image-armel
       - build:
-          image: BuildSysrootARM
-          name: build-image-arm
+          image: armhf
+          name: build-image-armhf
       - build:
-          image: BuildSysrootAmd64
-          name: build-image-x64
-      - build:
-          image: BuildSysrootI386
+          image: i386
           name: build-image-i386
+      - build:
+          image: mips64el
+          name: build-image-mips64el
+      - build:
+          image: mipsel
+          name: build-image-mipsel
       - upload-images:
           requires:
+            - build-image-amd64
             - build-image-arm64
-            - build-image-mips64
-            - build-image-mips
             - build-image-armel
-            - build-image-arm
-            - build-image-x64
+            - build-image-armhf
             - build-image-i386
+            - build-image-mips64el
+            - build-image-mipsel
