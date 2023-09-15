@@ -37,6 +37,10 @@ APT_SOURCES_LIST=(
   "${ARCHIVE_URL} bookworm main"
   "${ARCHIVE_URL} bookworm-updates main"
 
+  # Debian 10 (Buster)
+  "${ARCHIVE_URL} buster main"
+  "${ARCHIVE_URL} buster-updates main"
+
   # Debian 9 (Stretch) is needed for gnome-keyring.  It should be kept before
   # bullseye so that bullseye takes precedence.
   "${ARCHIVE_URL} stretch main"
