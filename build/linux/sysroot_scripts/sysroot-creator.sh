@@ -916,9 +916,8 @@ BuildSysroot() {
 
 UploadSysroot() {
   local sha=$(sha256sum "${TARBALL}" | awk '{print $1;}')
-  local tarball_name="$(basename "${TARBALL}")"
   set -x
-  az storage blob upload -f "${TARBALL}" -c linux-sysroots -n $sha/"${tarball_name}"
+  az storage blob upload -f "${TARBALL}" -c linux-sysroots -n $sha
   set +x
 }
 
