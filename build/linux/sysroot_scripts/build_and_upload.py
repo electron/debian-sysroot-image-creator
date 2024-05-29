@@ -19,15 +19,15 @@ ARCHES = ("amd64", "i386", "armhf", "arm64", "armel", "mipsel", "mips64el")
 DEFAULT_URL_PREFIX = "https://dev-cdn.electronjs.org/linux-sysroots"
 
 
-def sha1sumfile(filename):
-  sha1 = hashlib.sha1()
+def sha256sumfile(filename):
+  sha256 = hashlib.sha256()
   with open(filename, "rb") as f:
     while True:
       data = f.read(65536)
       if not data:
         break
-      sha1.update(data)
-  return sha1.hexdigest()
+      sha256.update(data)
+  return sha256.hexdigest()
 
 
 def get_proc_output(args):
@@ -45,12 +45,12 @@ def build_and_upload(script_path, distro, release, key, arch, lock):
   tarball = "%s_%s_%s_sysroot.tar.xz" % (distro, release, arch.lower())
   tarxz_path = os.path.join(script_dir, "..", "..", "..", "out",
                             "sysroot-build", release, tarball)
-  sha1sum = sha1sumfile(tarxz_path)
+  sha256sum = sha256sumfile(tarxz_path)
   sysroot_dir = "%s_%s_%s-sysroot" % (distro, release, arch.lower())
 
   sysroot_metadata = {
       "Key": key,
-      "Sha1Sum": sha1sum,
+      "Sha256Sum": sha256sum,
       "SysrootDir": sysroot_dir,
       "Tarball": tarball,
       "URL": DEFAULT_URL_PREFIX,
