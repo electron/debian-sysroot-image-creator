@@ -799,6 +799,14 @@ HacksAndPatches() {
     "${INSTALL_ROOT}/lib/${TRIPLE}/libm.so.6"
   "${SCRIPT_DIR}/reversion_glibc.py" \
     "${INSTALL_ROOT}/lib/${TRIPLE}/libcrypt.so.1"
+
+  # GTK4 is provided by bookworm (12), but pango is provided by bullseye
+  # (11). Fix the GTK4 pkgconfig file to relax the pango version
+  # requirement.
+  local gtk4_pc="${INSTALL_ROOT}/usr/lib/pkgconfig/gtk4.pc"
+
+  sed -i -E 's/pango [>=0-9. ]*/pango/' "$gtk4_pc"
+  sed -i -E 's/pangocairo [>=0-9. ]*/pangocairo/' "$gtk4_pc"
 }
 
 InstallIntoSysroot() {
