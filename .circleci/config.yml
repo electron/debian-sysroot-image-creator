@@ -16,6 +16,9 @@ commands:
             if [ -d out/sysroot-build/bullseye/debian-packages]; then
               rm out/sysroot-build/bullseye/debian-packages/libfreetype6*
             fi
+      - run:
+          name: Install dependencies
+          command: python3 -m pip install --upgrade requests
   build-image:
     parameters:
       image:
@@ -25,7 +28,7 @@ commands:
       - run:
           name: Build << parameters.image >> sysroot
           command: |
-            ./build/linux/sysroot_scripts/sysroot-creator.sh build << parameters.image >>
+            ./build/linux/sysroot_scripts/sysroot_creator.py build << parameters.image >>
       - persist_to_workspace:
           root: .
           paths:
@@ -37,14 +40,14 @@ jobs:
       image:
         type: string
     docker:
-      - image: cimg/python:3.11.3
+      - image: cimg/python:3.9.19
     resource_class: 2xlarge
     steps:
       - build-image:
           image: << parameters.image >>
   upload-images:
     docker:
-      - image: cimg/base:2022.04
+      - image: cimg/python:3.9.19
     resource_class: large
     steps:
       - prepare
@@ -66,29 +69,25 @@ workflows:
           image: amd64
           name: build-image-amd64
       - build:
-          image: arm64
-          name: build-image-arm64
-      - build:
-          image: armel
-          name: build-image-armel
+          image: i386
+          name: build-image-i386
       - build:
           image: armhf
           name: build-image-armhf
       - build:
-          image: i386
-          name: build-image-i386
-      - build:
-          image: mips64el
-          name: build-image-mips64el
+          image: arm64
+          name: build-image-arm64
       - build:
           image: mipsel
           name: build-image-mipsel
+      - build:
+          image: mips64el
+          name: build-image-mips64el
       - upload-images:
           requires:
             - build-image-amd64
-            - build-image-arm64
-            - build-image-armel
-            - build-image-armhf
             - build-image-i386
-            - build-image-mips64el
+            - build-image-armhf
+            - build-image-arm64
             - build-image-mipsel
+            - build-image-mips64el

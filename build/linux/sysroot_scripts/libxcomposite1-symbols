@@ -13,3 +13,4 @@ libXcomposite.so.1 libxcomposite1 #MINVER#
  XCompositeUnredirectSubwindows@Base 1:0.4.4-1
  XCompositeUnredirectWindow@Base 1:0.4.4-1
  XCompositeVersion@Base 1:0.4.4-1
+ 
