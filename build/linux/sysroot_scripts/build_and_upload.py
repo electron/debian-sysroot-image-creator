@@ -6,6 +6,7 @@
 """Automates running sysroot-creator.sh for each supported arch.
 """
 
+import argparse
 import json
 import multiprocessing
 import os
@@ -15,13 +16,20 @@ import sysroot_creator
 
 DEFAULT_URL_PREFIX = "https://dev-cdn.electronjs.org/linux-sysroots"
 
+class Action:
+    BUILD = 1 << 0
+    UPLOAD = 1 << 1
+    BUILD_AND_UPLOAD = BUILD | UPLOAD
 
-def build_and_upload(key, arch, lock):
+def build_and_upload(key, arch, lock, action):
     script_dir = os.path.dirname(os.path.realpath(__file__))
 
-    if "SKIP_SYSROOT_BUILD" not in os.environ:
+    if action & Action.BUILD:
         sysroot_creator.build_sysroot(arch)
-    if "AZURE_STORAGE_SAS_TOKEN" in os.environ:
+
+    if action & Action.UPLOAD:
+        if "AZURE_STORAGE_SAS_TOKEN" not in os.environ:
+            raise RuntimeError("AZURE_STORAGE_SAS_TOKEN is required to upload sysroots")
         sysroot_creator.upload_sysroot(arch)
 
     tarball = "%s_%s_%s_sysroot.tar.xz" % (
@@ -67,7 +75,7 @@ def build_and_upload(key, arch, lock):
             f.write("\n")
 
 
-def main():
+def main(action):
     key = "%s-%s" % (sysroot_creator.ARCHIVE_TIMESTAMP,
                      sysroot_creator.SYSROOT_RELEASE)
 
@@ -76,7 +84,7 @@ def main():
     for arch in sysroot_creator.TRIPLES:
         proc = multiprocessing.Process(
             target=build_and_upload,
-            args=(key, arch, lock),
+            args=(key, arch, lock, action),
         )
         procs.append((
             "%s %s (%s)" %
@@ -98,4 +106,19 @@ def main():
 
 
 if __name__ == "__main__":
-  sys.exit(main())
+    parser = argparse.ArgumentParser(description='Build and upload sysroots')
+    parser.add_argument('--build',
+                      action='store_true',
+                      help='Skip building sysroots')
+    parser.add_argument('--upload',
+                      action='store_true',
+                      help='Upload sysroots')
+    args = parser.parse_args()
+
+    action = Action.BUILD_AND_UPLOAD
+    if args.build:
+        action &= ~Action.UPLOAD
+    if args.upload:
+        action &= ~Action.BUILD
+
+    sys.exit(main(action))
