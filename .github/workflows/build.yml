@@ -5,6 +5,9 @@ on:
     types:
       - opened
       - synchronize
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -58,6 +61,7 @@ jobs:
           curl --output build/linux/sysroot_scripts/sysroots.json $json_url
           az extension add --name storage-preview
       - name: Upload Sysroots to Azure
+        if: github.event_name == 'push'
         run: ./build/linux/sysroot_scripts/build_and_upload.py --upload
       - name: Upload Sysroot JSON Artifact
         uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # 4.2.6
