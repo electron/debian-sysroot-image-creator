@@ -2,8 +2,6 @@ name: "Build and Upload Sysroots"
 
 on:
   push:
-    branches:
-      - bullseye
 
 permissions:
   contents: write
