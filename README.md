@@ -1,4 +1,4 @@
-This reposiroty contains a set of scripts for creating linux sysroot images, copied from Chromium.
+This repository contains a set of scripts for creating linux sysroot images, copied from Chromium.
 
 It adds some necessary dependencies for Electron and uploads the images to Electron's Azure storage container.
 
