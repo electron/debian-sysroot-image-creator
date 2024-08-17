@@ -51,7 +51,7 @@ This will generate all sysroots at `out/sysroot-build/bullseye`.
 
 ## Uploading Sysroots
 
-To upload sysroots to the azure bucket after they've been generated, run:
+To upload sysroots to the Azure storage container after they've been generated, run:
 
 ```console
 ./build/linux/sysroot_scripts/build_and_upload.py --build
