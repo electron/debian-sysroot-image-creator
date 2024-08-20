@@ -540,6 +540,12 @@ DEBIAN_PACKAGES = [
     "zlib1g-dev",
 ]
 
+# Electron needs this independent of Chromium.
+DEBIAN_PACKAGES_ELECTRON = [
+    "libnotify4",
+    "libnotify-dev",
+]
+
 DEBIAN_PACKAGES_ARCH = {
     "amd64": [
         "libasan6",
@@ -757,7 +763,7 @@ def generate_package_list(arch: str) -> dict[str, str]:
 
     # Read the input file and create a dictionary mapping package names to URLs
     # and checksums.
-    missing = set(DEBIAN_PACKAGES + DEBIAN_PACKAGES_ARCH[arch])
+    missing = set(DEBIAN_PACKAGES + DEBIAN_PACKAGES_ELECTRON + DEBIAN_PACKAGES_ARCH[arch])
     package_dict: dict[str, str] = {}
     for meta in package_meta.values():
         package = meta["Package"]
