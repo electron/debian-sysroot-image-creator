@@ -15,7 +15,7 @@ jobs:
     name: Build
     strategy:
       matrix:
-        arch: [amd64, i386, armhf, arm64, mipsel, mips64el]
+        arch: [amd64, i386, armhf, arm64, mipsel, mips64el, ppc64el]
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
@@ -24,7 +24,7 @@ jobs:
       - name: Install Packages
         run: |
           sudo apt update
-          sudo apt install -y binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu
+          sudo apt install -y binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu binutils-powerpc64le-linux-gnu
       - name: Install dependencies
         run: python3 -m pip install --upgrade requests
       - name: Build Sysroot

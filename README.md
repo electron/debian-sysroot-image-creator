@@ -28,6 +28,7 @@ At the moment, we build the following sysroots:
 * `arm64`
 * `mipsel`
 * `mips64el`
+* `ppc64el`
 
 ## Building A Single Sysroot
 
