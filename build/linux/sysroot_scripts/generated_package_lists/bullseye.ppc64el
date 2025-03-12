@@ -1,4 +1,3 @@
-
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/a/acl/libacl1_2.2.53-10_ppc64el.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/a/adduser/adduser_3.118+deb11u1_all.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/a/adwaita-icon-theme/adwaita-icon-theme_3.38.0-1_all.deb
@@ -278,6 +277,9 @@ https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libj/libjp
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libj/libjsoncpp/libjsoncpp-dev_1.9.4-4_ppc64el.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libj/libjsoncpp/libjsoncpp24_1.9.4-4_ppc64el.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libm/libmd/libmd0_1.0.3-3_ppc64el.deb
+https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libn/libnotify/gir1.2-notify-0.7_0.7.9-3_ppc64el.deb
+https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libn/libnotify/libnotify-dev_0.7.9-3_ppc64el.deb
+https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libn/libnotify/libnotify4_0.7.9-3_ppc64el.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libn/libnsl/libnsl-dev_1.3.0-2_ppc64el.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libn/libnsl/libnsl2_1.3.0-2_ppc64el.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libo/libogg/libogg-dev_1.3.4-0.1_ppc64el.deb

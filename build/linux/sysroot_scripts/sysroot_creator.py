@@ -36,7 +36,7 @@ BUILD_DIR = os.path.join(CHROME_DIR, "out", "sysroot-build", RELEASE)
 # gpg keyring file generated using generate_keyring.sh
 KEYRING_FILE = os.path.join(SCRIPT_DIR, "keyring.gpg")
 
-ARCHIVE_TIMESTAMP = "20230611T210420Z"
+ARCHIVE_TIMESTAMP = "20250129T203412Z"
 
 ARCHIVE_URL = f"https://snapshot.debian.org/archive/debian/{ARCHIVE_TIMESTAMP}/"
 APT_SOURCES_LIST = [
@@ -81,6 +81,7 @@ DEBIAN_PACKAGES = [
     "libbluetooth-dev",
     "libc6-dev",
     "libcap-dev",
+    "libcolord-dev",
     "libcups2-dev",
     "libcupsimage2-dev",
     "libcurl4-gnutls-dev",
@@ -98,8 +99,10 @@ DEBIAN_PACKAGES = [
     "libjpeg-dev",
     "libjsoncpp-dev",
     "libkrb5-dev",
+    "liblcms2-dev",
     "liblzma-dev",
     "libminizip-dev",
+    "libmtdev-dev",
     "libncurses-dev",
     "libnss3-dev",
     "libopus-dev",
@@ -434,6 +437,9 @@ def hacks_and_patches(install_root: str, script_dir: str, arch: str) -> None:
     replace_in_file(gtk4_pc, r"pango [>=0-9. ]*", "pango")
     replace_in_file(gtk4_pc, r"pangocairo [>=0-9. ]*", "pangocairo")
 
+    # Remove a cyclic symlink: /usr/bin/X11 -> /usr/bin
+    os.remove(os.path.join(install_root, "usr/bin/X11"))
+
 
 def replace_in_file(file_path: str, search_pattern: str,
                     replace_pattern: str) -> None:
@@ -560,12 +566,16 @@ def removing_unnecessary_files(install_root, arch):
     Minimizes the sysroot by removing unnecessary files.
     """
     # Preserve these files.
+    gcc_triple = "i686-linux-gnu" if arch == "i386" else TRIPLES[arch]
     ALLOWLIST = {
         "usr/bin/cups-config",
-        f"usr/lib/gcc/{TRIPLES[arch]}/10/libgcc.a",
+        f"usr/lib/gcc/{gcc_triple}/10/libgcc.a",
         f"usr/lib/{TRIPLES[arch]}/libc_nonshared.a",
         f"usr/lib/{TRIPLES[arch]}/libffi_pic.a",
     }
+
+    for file in ALLOWLIST:
+        assert os.path.exists(os.path.join(install_root, file))
 
     # Remove all executables and static libraries, and any symlinks that
     # were pointing to them.
@@ -594,8 +604,15 @@ def removing_unnecessary_files(install_root, arch):
 def strip_sections(install_root: str, arch: str):
     """
     Strips all sections from ELF files except for dynamic linking and
-    essential sections. Skips static libraries (.a) and object files (.o).
+    essential sections. Skips static libraries (.a), object files (.o), and a
+    few files used by other Chromium-related projects.
     """
+    PRESERVED_FILES = (
+        'libc-2.31.so',
+        'libm-2.31.so',
+        'ld-2.31.so',
+    )
+
     PRESERVED_SECTIONS = {
         ".dynamic",
         ".dynstr",
@@ -608,9 +625,14 @@ def strip_sections(install_root: str, arch: str):
         ".note.gnu.build-id",
     }
 
+    preserved_files_count = 0
+    lib_arch_path = os.path.join(install_root, "lib", TRIPLES[arch])
     for root, _, files in os.walk(install_root):
         for file in files:
             file_path = os.path.join(root, file)
+            if file_path.startswith(lib_arch_path) and file in PRESERVED_FILES:
+                preserved_files_count += 1
+                continue
 
             if (os.access(file, os.X_OK) or file.endswith((".a", ".o"))
                     or os.path.islink(file_path)):
@@ -646,6 +668,8 @@ def strip_sections(install_root: str, arch: str):
                     for section in sections_to_remove
                 ] + [file_path])
                 subprocess.run(objcopy_cmd, check=True, stderr=subprocess.PIPE)
+    if preserved_files_count != len(PRESERVED_FILES):
+        raise Exception("Expected file to preserve missing")
 
 
 def record_metadata(install_root: str) -> dict[str, tuple[float, float]]:
