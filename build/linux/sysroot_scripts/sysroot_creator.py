@@ -36,7 +36,7 @@ BUILD_DIR = os.path.join(CHROME_DIR, "out", "sysroot-build", RELEASE)
 # gpg keyring file generated using generate_keyring.sh
 KEYRING_FILE = os.path.join(SCRIPT_DIR, "keyring.gpg")
 
-ARCHIVE_TIMESTAMP = "20230611T210420Z"
+ARCHIVE_TIMESTAMP = "20250129T203412Z"
 
 ARCHIVE_URL = f"https://snapshot.debian.org/archive/debian/{ARCHIVE_TIMESTAMP}/"
 APT_SOURCES_LIST = [
@@ -81,6 +81,7 @@ DEBIAN_PACKAGES = [
     "libbluetooth-dev",
     "libc6-dev",
     "libcap-dev",
+    "libcolord-dev",
     "libcups2-dev",
     "libcupsimage2-dev",
     "libcurl4-gnutls-dev",
@@ -98,8 +99,10 @@ DEBIAN_PACKAGES = [
     "libjpeg-dev",
     "libjsoncpp-dev",
     "libkrb5-dev",
+    "liblcms2-dev",
     "liblzma-dev",
     "libminizip-dev",
+    "libmtdev-dev",
     "libncurses-dev",
     "libnss3-dev",
     "libopus-dev",
