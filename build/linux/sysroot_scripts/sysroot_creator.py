@@ -57,6 +57,7 @@ TRIPLES = {
     "arm64": "aarch64-linux-gnu",
     "mipsel": "mipsel-linux-gnu",
     "mips64el": "mips64el-linux-gnuabi64",
+    "ppc64el": "powerpc64le-linux-gnu",
 }
 
 REQUIRED_TOOLS = [
