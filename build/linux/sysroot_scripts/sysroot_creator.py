@@ -715,7 +715,8 @@ def upload_sysroot(arch: str) -> str:
         "az", "storage", "blob", "upload",
         "-f", tarball_path,
         "-c", "linux-sysroots",
-        "-n", sha
+        "-n", sha,
+        "--overwrite"
     ]
     return subprocess.check_output(command).decode("utf-8")
 
