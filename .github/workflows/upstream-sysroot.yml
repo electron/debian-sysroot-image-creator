@@ -12,30 +12,31 @@ on:
       current-sha:
         type: string
         description: 'Current SHA for build/linux/sysroot_scripts'
-        required: true
+        required: false
       upstream-sha:
         type: string
         description: 'Upstream SHA for build/linux/sysroot_scripts'
-        required: true
+        required: false
 
 jobs:
   check-upstream-sysroot:
     permissions:
       issues: write
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.0.2
     - name: Fetch Current SHA
       shell: bash
       run: |
         if [ -n "${{ github.event.inputs.current-sha }}" ]; then
           CURRENT_SHA="${{ github.event.inputs.current-sha }}"
+        elif [ -f current-sha.json ]; then
+          CURRENT_SHA=$(jq -r '.sha' current-sha.json)
         else
-          if [ -f current-sha.json ]; then
-            CURRENT_SHA=$(jq -r '.sha' current-sha.json)
-          else
-            echo "No current SHA provided and current-sha.json not found."
-            exit 1
-          fi
+          echo "No current SHA provided and current-sha.json not found."
+          exit 1
         fi
         echo "CURRENT_SHA=${CURRENT_SHA}" >> $GITHUB_ENV
     - name: Fetch latest upstream SHA
@@ -44,7 +45,7 @@ jobs:
         if [ -n "${{ github.event.inputs.upstream-sha }}" ]; then
           UPSTREAM_SHA="${{ github.event.inputs.upstream-sha }}"
         else
-          UPSTREAM_SHA=$(curl -s "https://api.github.com/repos/chromium/chromium/commits?path=build/linux/sysroot_scripts&per_page=1" | jq -r '.[0].sha')
+          UPSTREAM_SHA=$(gh api -X GET repos/chromium/chromium/commits -f path="build/linux/sysroot_scripts" -f per_page=1 --jq '.[0].sha')
         fi
         echo "UPSTREAM_SHA=${UPSTREAM_SHA}" >> $GITHUB_ENV
     - name: Compare current SHA with upstream SHA
@@ -53,7 +54,7 @@ jobs:
         if [ "${{ env.CURRENT_SHA }}" == "${{ env.UPSTREAM_SHA }}" ]; then
           echo "No changes found - sysroot scripts are up to date!"
         else
-          curl -s "https://api.github.com/repos/chromium/chromium/commits?path=build/linux/sysroot_scripts&per_page=20" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" > commits.json
+          gh api -X GET repos/chromium/chromium/commits -f path="build/linux/sysroot_scripts" -f per_page=20 > commits.json
 
           COMMITS=$(
             jq -r --arg base_sha "${{ env.CURRENT_SHA }}" '
@@ -62,6 +63,11 @@ jobs:
               "- [`\(.sha[0:7])`](\(.html_url)) \(.commit.message | split("\n")[0])"
             ' commits.json
           )
+
+          if [ -z "$COMMITS" ]; then
+            echo "No new commits found."
+            exit 0
+          fi
 
           ISSUE_BODY=$(cat <<EOF
         ### Upstream sysroot scripts have been updated
@@ -74,12 +80,5 @@ jobs:
         EOF
           )
 
-          BODY_JSON=$(jq -n --arg body "$ISSUE_BODY" --arg title "Upstream sysroot scripts have changed" '{title: $title, body: $body}')
-
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Content-Type: application/json" \
-            -d "$BODY_JSON" \
-            "https://api.github.com/repos/${{ github.repository }}/issues"
+          gh issue create --title "Upstream sysroot scripts have changed" --body="$ISSUE_BODY"
         fi
