@@ -1,0 +1,85 @@
+name: Check Upstream Sysroot Updates
+
+description: |
+  This workflow runs every two weeks, checks our sysroot scripts against Chromium's
+  at build/linux/sysroot_scripts and opens an issue if there are any new changes.
+
+on:
+  schedule:
+    - cron: "0 0 1,15 * *"
+  workflow_dispatch:
+    inputs:
+      current-sha:
+        type: string
+        description: 'Current SHA for build/linux/sysroot_scripts'
+        required: true
+      upstream-sha:
+        type: string
+        description: 'Upstream SHA for build/linux/sysroot_scripts'
+        required: true
+
+jobs:
+  check-upstream-sysroot:
+    permissions:
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Fetch Current SHA
+      shell: bash
+      run: |
+        if [ -n "${{ github.event.inputs.current-sha }}" ]; then
+          CURRENT_SHA="${{ github.event.inputs.current-sha }}"
+        else
+          if [ -f current-sha.json ]; then
+            CURRENT_SHA=$(jq -r '.sha' current-sha.json)
+          else
+            echo "No current SHA provided and current-sha.json not found."
+            exit 1
+          fi
+        fi
+        echo "CURRENT_SHA=${CURRENT_SHA}" >> $GITHUB_ENV
+    - name: Fetch latest upstream SHA
+      shell: bash
+      run: |
+        if [ -n "${{ github.event.inputs.upstream-sha }}" ]; then
+          UPSTREAM_SHA="${{ github.event.inputs.upstream-sha }}"
+        else
+          UPSTREAM_SHA=$(curl -s "https://api.github.com/repos/chromium/chromium/commits?path=build/linux/sysroot_scripts&per_page=1" | jq -r '.[0].sha')
+        fi
+        echo "UPSTREAM_SHA=${UPSTREAM_SHA}" >> $GITHUB_ENV
+    - name: Compare current SHA with upstream SHA
+      shell: bash
+      run: |
+        if [ "${{ env.CURRENT_SHA }}" == "${{ env.UPSTREAM_SHA }}" ]; then
+          echo "No changes found - sysroot scripts are up to date!"
+        else
+          curl -s "https://api.github.com/repos/chromium/chromium/commits?path=build/linux/sysroot_scripts&per_page=20" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" > commits.json
+
+          COMMITS=$(
+            jq -r --arg base_sha "${{ env.CURRENT_SHA }}" '
+              ([.[].sha] | index($base_sha) // length) as $idx |
+              .[0:$idx] | .[] | 
+              "- [`\(.sha[0:7])`](\(.html_url)) \(.commit.message | split("\n")[0])"
+            ' commits.json
+          )
+
+          ISSUE_BODY=$(cat <<EOF
+        ### Upstream sysroot scripts have been updated
+
+        Commits between \`${CURRENT_SHA:0:7}\` and \`${UPSTREAM_SHA:0:7}\`:
+
+        ${COMMITS}
+
+        Please review these changes and update our scripts accordingly.
+        EOF
+          )
+
+          BODY_JSON=$(jq -n --arg body "$ISSUE_BODY" --arg title "Upstream sysroot scripts have changed" '{title: $title, body: $body}')
+
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Content-Type: application/json" \
+            -d "$BODY_JSON" \
+            "https://api.github.com/repos/${{ github.repository }}/issues"
+        fi
