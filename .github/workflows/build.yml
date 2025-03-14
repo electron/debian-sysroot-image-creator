@@ -2,6 +2,9 @@ name: "Build and Upload Sysroots"
 
 on:
   push:
+    paths:
+      - build/linux/sysroot_scripts
+      - .github/workflows/build.yml
 
 permissions:
   contents: write
