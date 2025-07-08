@@ -34,7 +34,7 @@ def build_and_upload(key, arch, lock, action):
 
     tarball = "%s_%s_%s_sysroot.tar.xz" % (
         sysroot_creator.DISTRO,
-        sysroot_creator.RELEASE,
+        sysroot_creator.RELEASES[arch],
         arch.lower(),
     )
     tarxz_path = os.path.join(
@@ -44,13 +44,13 @@ def build_and_upload(key, arch, lock, action):
         "..",
         "out",
         "sysroot-build",
-        sysroot_creator.RELEASE,
+        sysroot_creator.RELEASES[arch],
         tarball,
     )
     sha256sum = sysroot_creator.sha256sumfile(tarxz_path)
     sysroot_dir = "%s_%s_%s-sysroot" % (
         sysroot_creator.DISTRO,
-        sysroot_creator.RELEASE,
+        sysroot_creator.RELEASES[arch],
         arch.lower(),
     )
 
@@ -65,7 +65,7 @@ def build_and_upload(key, arch, lock, action):
         fname = os.path.join(script_dir, "sysroots.json")
         sysroots = json.load(open(fname))
         with open(fname, "w") as f:
-            sysroots["%s_%s" % (sysroot_creator.RELEASE,
+            sysroots["%s_%s" % (sysroot_creator.RELEASES[arch],
                                 arch.lower())] = sysroot_metadata
             f.write(
                 json.dumps(sysroots,
@@ -88,7 +88,7 @@ def main(action):
         )
         procs.append((
             "%s %s (%s)" %
-            (sysroot_creator.DISTRO, sysroot_creator.RELEASE, arch),
+            (sysroot_creator.DISTRO, sysroot_creator.RELEASES[arch], arch),
             proc,
         ))
         proc.start()
