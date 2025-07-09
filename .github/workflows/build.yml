@@ -18,7 +18,7 @@ jobs:
     name: Build
     strategy:
       matrix:
-        arch: [amd64, i386, armhf, arm64, mipsel, mips64el, ppc64el]
+        arch: [amd64, i386, armhf, arm64, mipsel, mips64el, ppc64el, riscv64]
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +27,14 @@ jobs:
       - name: Install Packages
         run: |
           sudo apt update
-          sudo apt install -y binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi binutils-arm-linux-gnueabihf binutils-mips64el-linux-gnuabi64 binutils-mipsel-linux-gnu binutils-powerpc64le-linux-gnu
+          sudo apt install -y \
+            binutils-aarch64-linux-gnu \
+            binutils-arm-linux-gnueabi \
+            binutils-arm-linux-gnueabihf \
+            binutils-mips64el-linux-gnuabi64 \
+            binutils-mipsel-linux-gnu \
+            binutils-powerpc64le-linux-gnu \
+            binutils-riscv64-linux-gnu
       - name: Install dependencies
         run: python3 -m pip install --upgrade requests
       - name: Build Sysroot
@@ -35,8 +42,8 @@ jobs:
       - name: Upload Sysroot Artifact
         uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # 4.2.6
         with:
-          name: debian_bullseye_${{ matrix.arch }}_sysroot.tar.xz
-          path: out/sysroot-build/bullseye/debian_bullseye_${{ matrix.arch }}_sysroot.tar.xz
+          name: ${{ matrix.arch == 'riscv64' && 'debian_trixie_' || 'debian_bullseye_' }}${{ matrix.arch }}_sysroot.tar.xz
+          path: ${{ matrix.arch == 'riscv64' && 'out/sysroot-build/trixie/debian_trixie_' || 'out/sysroot-build/bullseye/debian_bullseye_' }}${{ matrix.arch }}_sysroot.tar.xz
   upload:
     name: Upload Sysroots to Azure
     runs-on: ubuntu-latest

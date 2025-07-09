@@ -29,6 +29,7 @@ At the moment, we build the following sysroots:
 * `mipsel`
 * `mips64el`
 * `ppc64el`
+* `riscv64`
 
 ## Building A Single Sysroot
 
@@ -39,6 +40,8 @@ To build a single sysroot, run:
 ```
 
 This will build the desire sysroot in `<arch>` at `out/sysroot-build/bullseye/debian_bullseye_<arch>_sysroot.tar.xz`, e.g. `out/sysroot-build/bullseye/debian_bullseye_amd64_sysroot.tar.xz`.
+
+**Note:** riscv64 officially becomes supported in Debian trixie release, so `riscv64` will result in the sysroot being built at `out/sysroot-build/trixie/debian_trixie_<arch>_sysroot.tar.xz`
 
 ## Building All Sysroots
 
