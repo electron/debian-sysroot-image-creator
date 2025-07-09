@@ -271,6 +271,9 @@ https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libj/libjp
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libj/libjsoncpp/libjsoncpp-dev_1.9.6-3_riscv64.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libj/libjsoncpp/libjsoncpp26_1.9.6-3_riscv64.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libm/libmd/libmd0_1.1.0-2+b1_riscv64.deb
+https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libn/libnotify/gir1.2-notify-0.7_0.8.3-1+b2_riscv64.deb
+https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libn/libnotify/libnotify-dev_0.8.3-1+b2_riscv64.deb
+https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libn/libnotify/libnotify4_0.8.3-1+b2_riscv64.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libo/libogg/libogg-dev_1.3.5-3+b2_riscv64.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libo/libogg/libogg0_1.3.5-3+b2_riscv64.deb
 https://snapshot.debian.org/archive/debian/20250129T203412Z/pool/main/libo/libopenmpt/libopenmpt0t64_0.7.13-1_riscv64.deb
