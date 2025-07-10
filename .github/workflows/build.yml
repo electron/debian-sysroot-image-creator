@@ -58,10 +58,17 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # 4.1.7
       - name: Install dependencies
         run: python3 -m pip install --upgrade requests
-      - name: Download Sysroot Artifacts
+      - name: Download Bullseye Sysroot Artifacts
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # 4.1.8
         with:
+          pattern: "debian_bullseye_*_sysroot.tar.xz"
           path: out/sysroot-build/bullseye
+          merge-multiple: true
+      - name: Download Trixie Sysroot Artifacts
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # 4.1.8
+        with:
+          pattern: "debian_trixie_*_sysroot.tar.xz"
+          path: out/sysroot-build/trixie
           merge-multiple: true
       - name: Download sysroots.json from Electron
         run: |
