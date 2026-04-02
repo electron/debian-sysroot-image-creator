@@ -7,7 +7,7 @@ on:
       - .github/workflows/build.yml
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # 4.1.7
+        with:
+          persist-credentials: false
       - name: Install Packages
         run: |
           sudo apt update
@@ -56,6 +58,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # 4.1.7
+        with:
+          persist-credentials: false
       - name: Install dependencies
         run: python3 -m pip install --upgrade requests
       - name: Download Bullseye Sysroot Artifacts
