@@ -42,7 +42,7 @@ jobs:
       - name: Build Sysroot
         run: ./build/linux/sysroot_scripts/sysroot_creator.py build ${{ matrix.arch }}
       - name: Upload Sysroot Artifact
-        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # 4.2.6
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # 4.2.6
         with:
           name: ${{ matrix.arch == 'riscv64' && 'debian_trixie_' || 'debian_bullseye_' }}${{ matrix.arch }}_sysroot.tar.xz
           path: ${{ matrix.arch == 'riscv64' && 'out/sysroot-build/trixie/debian_trixie_' || 'out/sysroot-build/bullseye/debian_bullseye_' }}${{ matrix.arch }}_sysroot.tar.xz
@@ -82,7 +82,7 @@ jobs:
       - name: Upload Sysroots to Azure
         run: ./build/linux/sysroot_scripts/build_and_upload.py --upload
       - name: Upload Sysroot JSON Artifact
-        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # 4.2.6
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # 4.2.6
         with:
           name: sysroots.json
           path: build/linux/sysroot_scripts/sysroots.json
