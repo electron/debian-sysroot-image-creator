@@ -63,13 +63,13 @@ jobs:
       - name: Install dependencies
         run: python3 -m pip install --upgrade requests
       - name: Download Bullseye Sysroot Artifacts
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # 4.1.8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # 8.0.1
         with:
           pattern: "debian_bullseye_*_sysroot.tar.xz"
           path: out/sysroot-build/bullseye
           merge-multiple: true
       - name: Download Trixie Sysroot Artifacts
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # 4.1.8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # 8.0.1
         with:
           pattern: "debian_trixie_*_sysroot.tar.xz"
           path: out/sysroot-build/trixie
