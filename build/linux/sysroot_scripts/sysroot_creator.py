@@ -816,6 +816,7 @@ def upload_sysroot(arch: str) -> str:
     sha = sha256sumfile(tarball_path)
     command = [
         "az", "storage", "blob", "upload",
+        "--auth-mode", "login",
         "-f", tarball_path,
         "-c", "linux-sysroots",
         "-n", sha,
