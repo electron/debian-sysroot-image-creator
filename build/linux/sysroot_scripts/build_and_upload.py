@@ -28,8 +28,6 @@ def build_and_upload(key, arch, lock, action):
         sysroot_creator.build_sysroot(arch)
 
     if action & Action.UPLOAD:
-        if "AZURE_STORAGE_SAS_TOKEN" not in os.environ:
-            raise RuntimeError("AZURE_STORAGE_SAS_TOKEN is required to upload sysroots")
         sysroot_creator.upload_sysroot(arch)
 
     tarball = "%s_%s_%s_sysroot.tar.xz" % (

@@ -61,4 +61,4 @@ To upload sysroots to the Azure storage container after they've been generated, 
 ./build/linux/sysroot_scripts/build_and_upload.py --build
 ```
 
-Ensure you have a valid `AZURE_STORAGE_SAS_TOKEN` as well as `AZURE_STORAGE_ACCOUNT` in your environment, or upload will fail.
+Ensure you are logged into Azure as well as setting `AZURE_STORAGE_ACCOUNT` in your environment, or upload will fail.
