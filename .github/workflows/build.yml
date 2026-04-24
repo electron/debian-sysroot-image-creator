@@ -86,7 +86,6 @@ jobs:
         run: |
           json_url="https://raw.githubusercontent.com/electron/electron/main/script/sysroots.json"
           curl --output build/linux/sysroot_scripts/sysroots.json $json_url -H "Accept: application/json"
-          az extension add --name storage-preview
       - name: Upload Sysroots to Azure
         run: ./build/linux/sysroot_scripts/build_and_upload.py --upload
       - name: Upload Sysroot JSON Artifact
