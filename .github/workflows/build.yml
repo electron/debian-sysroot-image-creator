@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # 6.0.2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
       - name: Install Packages
@@ -42,7 +42,7 @@ jobs:
       - name: Build Sysroot
         run: ./build/linux/sysroot_scripts/sysroot_creator.py build ${{ matrix.arch }}
       - name: Upload Sysroot Artifact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # 4.2.6
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: ${{ matrix.arch == 'riscv64' && 'debian_trixie_' || 'debian_bullseye_' }}${{ matrix.arch }}_sysroot.tar.xz
           path: ${{ matrix.arch == 'riscv64' && 'out/sysroot-build/trixie/debian_trixie_' || 'out/sysroot-build/bullseye/debian_bullseye_' }}${{ matrix.arch }}_sysroot.tar.xz
@@ -59,7 +59,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # 6.0.2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
       - name: Azure login
@@ -71,13 +71,13 @@ jobs:
       - name: Install dependencies
         run: python3 -m pip install --upgrade requests
       - name: Download Bullseye Sysroot Artifacts
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # 8.0.1
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           pattern: "debian_bullseye_*_sysroot.tar.xz"
           path: out/sysroot-build/bullseye
           merge-multiple: true
       - name: Download Trixie Sysroot Artifacts
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # 8.0.1
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           pattern: "debian_trixie_*_sysroot.tar.xz"
           path: out/sysroot-build/trixie
@@ -89,7 +89,7 @@ jobs:
       - name: Upload Sysroots to Azure
         run: ./build/linux/sysroot_scripts/build_and_upload.py --upload
       - name: Upload Sysroot JSON Artifact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # 4.2.6
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: sysroots.json
           path: build/linux/sysroot_scripts/sysroots.json
