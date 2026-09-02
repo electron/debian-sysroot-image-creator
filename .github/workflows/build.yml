@@ -18,7 +18,7 @@ jobs:
     name: Build
     strategy:
       matrix:
-        arch: [amd64, i386, armhf, arm64, mipsel, mips64el, ppc64el, riscv64]
+        arch: [amd64, i386, armhf, arm64, mipsel, mips64el, ppc64el, riscv64, s390x]
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +36,8 @@ jobs:
             binutils-mips64el-linux-gnuabi64 \
             binutils-mipsel-linux-gnu \
             binutils-powerpc64le-linux-gnu \
-            binutils-riscv64-linux-gnu
+            binutils-riscv64-linux-gnu \
+            binutils-s390x-linux-gnu
       - name: Install dependencies
         run: python3 -m pip install --upgrade requests
       - name: Build Sysroot

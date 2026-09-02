@@ -30,6 +30,7 @@ At the moment, we build the following sysroots:
 * `mips64el`
 * `ppc64el`
 * `riscv64`
+* `s390x`
 
 ## Building A Single Sysroot
 
